@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghid Ramuri Pomi Fructiferi</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bark:    #8B6242;
+  --bark-dk: #5C3D1E;
+  --leaf:    #3B6D11;
+  --leaf-lt: #7AAD3A;
+  --gold:    #C8922A;
+  --gold-lt: #F0C85A;
+  --red:     #A32D2D;
+  --red-lt:  #E07070;
+  --blue:    #1A5276;
+  --sky:     #D6EAF8;
+
+  --bg:      #FDFAF5;
+  --bg2:     #F5F0E8;
+  --bg3:     #EDE6D8;
+  --ink:     #2C1F0E;
+  --ink2:    #6B5040;
+  --ink3:    #A0876A;
+  --border:  #D4C4A8;
+
+  --font-display: 'Lora', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:    #1A1510;
+    --bg2:   #231D15;
+    --bg3:   #2E2518;
+    --ink:   #F0E8D8;
+    --ink2:  #C4A882;
+    --ink3:  #8A7055;
+    --border:#3D3020;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--bark-dk);
+  padding: 2.5rem 2rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg, transparent, transparent 20px,
+    rgba(255,255,255,0.015) 20px, rgba(255,255,255,0.015) 40px
+  );
+}
+.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: #F5E8D0;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.header p {
+  color: #C4A882;
+  font-size: 14px;
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+/* ── NAV TABS ── */
+.nav-tabs {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 0;
+  padding: 0 1rem;
+  max-width: 100%;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+.nav-tab {
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink3);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+.nav-tab:hover { color: var(--ink2); }
+.nav-tab.active { color: var(--bark-dk); border-bottom-color: var(--bark-dk); font-weight: 500; }
+@media (prefers-color-scheme: dark) {
+  .nav-tab.active { color: var(--gold-lt); border-bottom-color: var(--gold-lt); }
+}
+
+/* ── CONTENT SECTIONS ── */
+.section { display: none; max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+.section.active { display: block; }
+
+/* ── PROSE ── */
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--bark-dk);
+  margin: 2rem 0 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+@media (prefers-color-scheme: dark) { .prose h2 { color: var(--gold-lt); } }
+.prose h2:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+.prose h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink2);
+  margin: 1.2rem 0 0.4rem;
+}
+.prose p { margin-bottom: 0.8rem; color: var(--ink); }
+.prose strong { font-weight: 500; color: var(--ink); }
+
+/* ── CARDS ── */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin: 1.2rem 0; }
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  position: relative;
+}
+.card-icon { font-size: 22px; margin-bottom: 6px; }
+.card-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+.card-body { font-size: 13px; color: var(--ink2); line-height: 1.55; }
+.card-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.tag-permanent  { background: #EDE6D8; color: #5C3D1E; }
+.tag-semi       { background: #E8F5E1; color: #27500A; }
+.tag-rod        { background: #E8F0FB; color: #0C447C; }
+.tag-bad        { background: #FCE8E8; color: #791F1F; }
+@media (prefers-color-scheme: dark) {
+  .tag-permanent { background: #3D2510; color: #F0C85A; }
+  .tag-semi      { background: #173404; color: #C0DD97; }
+  .tag-rod       { background: #042C53; color: #85B7EB; }
+  .tag-bad       { background: #500D0D; color: #F09595; }
+}
+
+/* ── ALERT BOXES ── */
+.alert {
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  margin: 1rem 0;
+  border-left: 3px solid;
+  line-height: 1.55;
+}
+.alert-warn    { background: #FEF3E2; color: #7D4E0A; border-color: #C8922A; }
+.alert-danger  { background: #FDECEC; color: #7A1F1F; border-color: #A32D2D; }
+.alert-success { background: #EBF6E2; color: #27500A; border-color: #3B6D11; }
+.alert-info    { background: #E8F0FB; color: #0C447C; border-color: #185FA5; }
+@media (prefers-color-scheme: dark) {
+  .alert-warn    { background: #2A1800; color: #F0C85A; border-color: #C8922A; }
+  .alert-danger  { background: #280808; color: #F09595; border-color: #A32D2D; }
+  .alert-success { background: #0A1E04; color: #C0DD97; border-color: #3B6D11; }
+  .alert-info    { background: #021530; color: #85B7EB; border-color: #185FA5; }
+}
+
+/* ── SVG DIAGRAMS ── */
+.diagram-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin: 1.2rem 0;
+  overflow-x: auto;
+}
+.diagram-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink3);
+  text-align: center;
+  margin-bottom: 10px;
+}
+svg { display: block; margin: 0 auto; }
+.svg-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+}
+
+/* ── STEP LIST ── */
+.step-list { display: flex; flex-direction: column; gap: 10px; margin: 1rem 0; }
+.step-item { display: flex; gap: 12px; align-items: flex-start; }
+.step-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 500;
+  flex-shrink: 0; margin-top: 1px;
+  background: var(--bg3);
+  color: var(--ink2);
+  border: 1px solid var(--border);
+}
+.step-text { font-size: 14px; line-height: 1.6; color: var(--ink); }
+
+/* ── TABLE ── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 1rem 0; }
+.data-table th {
+  text-align: left; padding: 8px 12px;
+  background: var(--bg3); color: var(--ink2);
+  font-weight: 500; font-size: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.data-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--ink);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--bg2); }
+
+/* ── LEGEND ROW ── */
+.legend-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 14px; font-size: 12px; }
+.legend-item { display: flex; align-items: center; gap: 6px; color: var(--ink2); }
+.legend-line { width: 24px; height: 3px; border-radius: 2px; }
+
+/* ── INTERACTIVE PRUNING ── */
+.prune-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; margin: 1.2rem 0; }
+.prune-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.prune-btn {
+  padding: 5px 14px; border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 12px; color: var(--ink2);
+  cursor: pointer; font-family: var(--font-body);
+  transition: all 0.15s;
+}
+.prune-btn:hover { background: var(--bg3); }
+.prune-btn.sel { background: var(--bark-dk); color: #F5E8D0; border-color: var(--bark-dk); }
+.prune-result {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--ink2);
+  min-height: 60px;
+  line-height: 1.6;
+}
+
+/* ── YEAR TIMELINE ── */
+.timeline { display: flex; flex-direction: column; gap: 0; margin: 1rem 0; }
+.tl-item { display: flex; gap: 0; }
+.tl-year {
+  width: 70px; flex-shrink: 0;
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 13px; color: var(--gold);
+  padding: 14px 0 14px;
+  text-align: right; padding-right: 16px;
+  position: relative;
+}
+.tl-year::after {
+  content: '';
+  position: absolute;
+  right: -1px; top: 18px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--bark);
+  border: 2px solid var(--bg2);
+  z-index: 1;
+}
+.tl-line {
+  width: 1px; background: var(--border);
+  flex-shrink: 0; position: relative;
+  margin-right: 16px;
+}
+.tl-content {
+  padding: 10px 0 18px;
+  flex: 1;
+}
+.tl-title { font-weight: 500; font-size: 14px; margin-bottom: 4px; }
+.tl-body { font-size: 13px; color: var(--ink2); line-height: 1.55; }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <h1>Anatomia pomului fructifer</h1>
+    <p>Ghid vizual — ramuri, structură, tăiere corectă</p>
+  </div>
+</div>
+
+<nav class="nav-tabs">
+  <button class="nav-tab active" data-sec="structura">Structura pomului</button>
+  <button class="nav-tab" data-sec="tipuri">Tipuri de ramuri</button>
+  <button class="nav-tab" data-sec="taietura">Cum tai corect</button>
+  <button class="nav-tab" data-sec="neglect">Pom neîngrijit</button>
+  <button class="nav-tab" data-sec="muguri">Muguri & rod</button>
+  <button class="nav-tab" data-sec="greseli">Greșeli frecvente</button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     SECȚIUNEA 1 — STRUCTURA POMULUI
+═══════════════════════════════════════════ -->
+<div class="section active" id="sec-structura">
+  <div class="prose">
+    <h2>Ierarhia ramurilor</h2>
+    <p>Un pom fructifer are o structură ierarhică clară. Fiecare nivel are durată de viață, rol și reguli de tăiere diferite. Înțelegerea acestei ierarhii e fundamentul oricărei tăieri corecte.</p>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Secțiune verticală prin coroana unui măr — ierarhia ramurilor</div>
+    <svg viewBox="0 0 700 480" width="100%" style="max-width:700px">
+      <!-- Sky background -->
+      <rect x="0" y="0" width="700" height="480" fill="none"/>
+
+      <!-- TRUNCHI -->
+      <rect x="330" y="380" width="40" height="90" rx="4" fill="#8B6242"/>
+      <rect x="335" y="385" width="8" height="80" rx="2" fill="#A07850" opacity="0.4"/>
+      <!-- trunchi label -->
+      <line x1="370" y1="420" x2="430" y2="420" stroke="#8B6242" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="434" y="424" class="svg-label" fill="#8B6242" font-weight="500">Trunchi</text>
+
+      <!-- SCHELET — ramura stânga principală -->
+      <path d="M340,380 Q280,330 200,280" stroke="#5C3D1E" stroke-width="18" fill="none" stroke-linecap="round"/>
+      <path d="M340,380 Q280,330 200,280" stroke="#8B6242" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <!-- SCHELET — ramura dreapta principală -->
+      <path d="M350,375 Q420,320 510,270" stroke="#5C3D1E" stroke-width="18" fill="none" stroke-linecap="round"/>
+      <path d="M350,375 Q420,320 510,270" stroke="#8B6242" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <!-- SCHELET — ramura centrala sus -->
+      <path d="M345,370 Q340,300 338,220" stroke="#5C3D1E" stroke-width="16" fill="none" stroke-linecap="round"/>
+      <path d="M345,370 Q340,300 338,220" stroke="#8B6242" stroke-width="12" fill="none" stroke-linecap="round"/>
+
+      <!-- Label SCHELET -->
+      <line x1="200" y1="280" x2="120" y2="310" stroke="#5C3D1E" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="20" y="298" width="96" height="30" rx="6" fill="#5C3D1E"/>
+      <text x="68" y="317" class="svg-label" fill="#F5E8D0" text-anchor="middle" font-weight="500">SCHELET</text>
+
+      <!-- SEMISCHELET stânga -->
+      <path d="M230,310 Q170,260 130,220" stroke="#7A5030" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M255,295 Q220,240 200,190" stroke="#7A5030" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <!-- SEMISCHELET dreapta -->
+      <path d="M460,295 Q500,240 530,200" stroke="#7A5030" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M490,280 Q520,250 545,210" stroke="#7A5030" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <!-- SEMISCHELET sus -->
+      <path d="M338,270 Q290,240 260,200" stroke="#7A5030" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <path d="M338,250 Q385,220 410,185" stroke="#7A5030" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+      <!-- Label SEMISCHELET -->
+      <line x1="130" y1="220" x2="90" y2="200" stroke="#7A5030" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="10" y="183" width="115" height="30" rx="6" fill="#7A5030"/>
+      <text x="67" y="202" class="svg-label" fill="#F5E8D0" text-anchor="middle" font-weight="500">SEMISCHELET</text>
+
+      <!-- RAMURI DE ROD — pinteni și lăstari scurți -->
+      <!-- stânga sus -->
+      <line x1="130" y1="220" x2="100" y2="195" stroke="#3B6D11" stroke-width="4" stroke-linecap="round"/>
+      <line x1="130" y1="220" x2="115" y2="190" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <line x1="130" y1="220" x2="148" y2="195" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <line x1="200" y1="190" x2="178" y2="162" stroke="#3B6D11" stroke-width="4" stroke-linecap="round"/>
+      <line x1="200" y1="190" x2="195" y2="160" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <line x1="200" y1="190" x2="218" y2="165" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <!-- dreapta sus -->
+      <line x1="530" y1="200" x2="510" y2="172" stroke="#3B6D11" stroke-width="4" stroke-linecap="round"/>
+      <line x1="530" y1="200" x2="548" y2="175" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <line x1="545" y1="210" x2="560" y2="182" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <!-- centru sus -->
+      <line x1="260" y1="200" x2="245" y2="172" stroke="#3B6D11" stroke-width="4" stroke-linecap="round"/>
+      <line x1="260" y1="200" x2="274" y2="172" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <line x1="410" y1="185" x2="395" y2="158" stroke="#3B6D11" stroke-width="4" stroke-linecap="round"/>
+      <line x1="410" y1="185" x2="424" y2="160" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <!-- ax central sus -->
+      <line x1="338" y1="220" x2="318" y2="190" stroke="#3B6D11" stroke-width="4" stroke-linecap="round"/>
+      <line x1="338" y1="220" x2="355" y2="192" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <line x1="338" y1="200" x2="325" y2="172" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <line x1="338" y1="200" x2="350" y2="172" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Muguri / fructe pe pinteni -->
+      <circle cx="100" cy="193" r="5" fill="#C8922A"/>
+      <circle cx="113" cy="188" r="4" fill="#E8B040"/>
+      <circle cx="150" cy="193" r="5" fill="#C8922A"/>
+      <circle cx="177" cy="160" r="5" fill="#C8922A"/>
+      <circle cx="196" cy="158" r="4" fill="#E8B040"/>
+      <circle cx="220" cy="163" r="5" fill="#C8922A"/>
+      <circle cx="509" cy="170" r="5" fill="#C8922A"/>
+      <circle cx="550" cy="173" r="4" fill="#E8B040"/>
+      <circle cx="562" cy="180" r="4" fill="#C8922A"/>
+      <circle cx="244" cy="170" r="5" fill="#C8922A"/>
+      <circle cx="276" cy="170" r="4" fill="#E8B040"/>
+      <circle cx="393" cy="156" r="5" fill="#C8922A"/>
+      <circle cx="426" cy="158" r="4" fill="#E8B040"/>
+      <circle cx="317" cy="188" r="5" fill="#C8922A"/>
+      <circle cx="357" cy="190" r="4" fill="#E8B040"/>
+      <circle cx="324" cy="170" r="4" fill="#C8922A"/>
+      <circle cx="352" cy="170" r="4" fill="#E8B040"/>
+
+      <!-- Label ROD -->
+      <line x1="530" y1="200" x2="610" y2="180" stroke="#3B6D11" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="605" y="160" width="85" height="30" rx="6" fill="#3B6D11"/>
+      <text x="647" y="179" class="svg-label" fill="#F5E8D0" text-anchor="middle" font-weight="500">RAMURI DE ROD</text>
+
+      <!-- LĂSTAR LACOM — vertical din schelet -->
+      <path d="M460,295 Q465,240 468,170" stroke="#A32D2D" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="6,3"/>
+      <polygon points="468,160 462,178 474,178" fill="#A32D2D"/>
+      <!-- Label LACOM -->
+      <line x1="468" y1="170" x2="590" y2="140" stroke="#A32D2D" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="586" y="120" width="104" height="30" rx="6" fill="#A32D2D"/>
+      <text x="638" y="139" class="svg-label" fill="#fff" text-anchor="middle" font-weight="500">LĂSTAR LACOM</text>
+
+      <!-- Sol -->
+      <rect x="0" y="460" width="700" height="20" fill="#7A5030" opacity="0.15" rx="0"/>
+      <line x1="0" y1="460" x2="700" y2="460" stroke="#8B6242" stroke-width="1.5" opacity="0.3"/>
+
+      <!-- Unghi indicator -->
+      <path d="M345,375 L345,340 Q370,355 380,375" stroke="#C8922A" stroke-width="1.5" fill="none" stroke-dasharray="3,2"/>
+      <text x="382" y="352" class="svg-label" fill="#C8922A" font-size="11">45–60°</text>
+    </svg>
+    <div class="legend-row" style="justify-content:center">
+      <div class="legend-item"><div class="legend-line" style="background:#5C3D1E;height:5px"></div><span>Schelet (permanent)</span></div>
+      <div class="legend-item"><div class="legend-line" style="background:#8B6242"></div><span>Semischelet</span></div>
+      <div class="legend-item"><div class="legend-line" style="background:#3B6D11"></div><span>Ramuri de rod</span></div>
+      <div class="legend-item"><div class="legend-line" style="background:#A32D2D;height:2px;border-bottom:2px dashed #A32D2D"></div><span>Lăstar lacom</span></div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>Reține o regulă simplă: <strong>grosimea unei ramuri nu trebuie să depășească 1/3 din grosimea ramurii din care pornește.</strong> Dacă o ramură secundară devine la fel de groasă ca cea principală, una dintre ele va trebui eliminată — altfel nu mai ai un pom, ci două pomi crescute împreună.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-tag tag-permanent">Permanent</span>
+      <div class="card-title">Schelet</div>
+      <div class="card-body">Trunchi + 3–5 ramuri principale. Durată de viață: toată viața pomului. Nu se taie niciodată complet — cel mult scurtat dacă e dezechilibrat.</div>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-semi">Semi-permanent</span>
+      <div class="card-title">Semischelet</div>
+      <div class="card-body">Ramuri secundare pe schelet. Durată: 5–15 ani. Se reînnoiesc periodic. Pe ele stau ramurile de rod. Cel mai mult lucru la tăiere.</div>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-rod">Efemer 2–8 ani</span>
+      <div class="card-title">Ramuri de rod</div>
+      <div class="card-body">Pinteni, lăstari de rod, buchete de mai. Produc fructe. Se reînnoiesc regulat prin tăiere. Tipul variază cu specia.</div>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-bad">Elimină</span>
+      <div class="card-title">Lăstari lacomi</div>
+      <div class="card-body">Lăstari verticali viguroși din trunchi sau baza scheletului. Nu produc rod. Fură seva. Se elimină complet sau se scurtează la 2 muguri.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECȚIUNEA 2 — TIPURI DE RAMURI
+═══════════════════════════════════════════ -->
+<div class="section" id="sec-tipuri">
+  <div class="prose">
+    <h2>Ramurile de rod — detalii pe specii</h2>
+    <p>Nu toate speciile rodesc la fel. Înainte de a tăia, trebuie să știi pe <em>ce tip de lemn</em> rodește pomul tău — altfel riști să tai exact ramurile care îți vor da fructe.</p>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Specie</th>
+        <th>Unde rodește</th>
+        <th>Tipul ramurilor de rod</th>
+        <th>Durată rod</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Măr, Păr</strong></td><td>Pinteni pe lemn de 2–8 ani</td><td>Pinteni scurți (2–15 cm), noduroși</td><td>6–10 ani</td></tr>
+      <tr><td><strong>Gutui</strong></td><td>Vârful lăstarilor de 1 an</td><td>Lăstari noi din sezonul curent</td><td>1 an</td></tr>
+      <tr><td><strong>Cireș, Vișin</strong></td><td>Buchete de mai pe lemn de 2–10 ani</td><td>Ramulețe foarte scurte (1–3 cm) cu muguri îngrămădiți</td><td>5–10 ani</td></tr>
+      <tr><td><strong>Piersic, Nectarin</strong></td><td>Exclusiv pe lăstari de 1 an</td><td>Lăstari de 30–60 cm cu muguri tripleți</td><td>1 an</td></tr>
+      <tr><td><strong>Cais, Prun</strong></td><td>Pinteni + lăstari de 1 an (mixt)</td><td>Pinteni scurți și lăstari mijlocii</td><td>3–6 ani</td></tr>
+      <tr><td><strong>Kaki</strong></td><td>Lăstari de 1 an la capătul ramurilor</td><td>Lăstari noi — nu tăia vârfurile</td><td>1 an</td></tr>
+    </tbody>
+  </table>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Cum arată mugurii la piersic — regula celor 3 muguri</div>
+    <svg viewBox="0 0 600 200" width="100%" style="max-width:600px">
+      <!-- Ramura de 1 an -->
+      <rect x="60" y="90" width="480" height="18" rx="9" fill="#8B6242"/>
+      <rect x="64" y="94" width="12" height="10" rx="3" fill="#A07850" opacity="0.5"/>
+
+      <!-- Grupuri de 3 muguri -->
+      <!-- grup 1 -->
+      <ellipse cx="140" cy="82" rx="9" ry="13" fill="#C8922A" transform="rotate(-10 140 82)"/>
+      <ellipse cx="158" cy="78" rx="7" ry="10" fill="#5C3D1E" transform="rotate(0 158 78)"/>
+      <ellipse cx="176" cy="82" rx="9" ry="13" fill="#C8922A" transform="rotate(10 176 82)"/>
+      <!-- grup 2 -->
+      <ellipse cx="260" cy="82" rx="9" ry="13" fill="#C8922A" transform="rotate(-10 260 82)"/>
+      <ellipse cx="278" cy="78" rx="7" ry="10" fill="#5C3D1E" transform="rotate(0 278 78)"/>
+      <ellipse cx="296" cy="82" rx="9" ry="13" fill="#C8922A" transform="rotate(10 296 82)"/>
+      <!-- grup 3 -->
+      <ellipse cx="380" cy="82" rx="9" ry="13" fill="#C8922A" transform="rotate(-10 380 82)"/>
+      <ellipse cx="398" cy="78" rx="7" ry="10" fill="#5C3D1E" transform="rotate(0 398 78)"/>
+      <ellipse cx="416" cy="82" rx="9" ry="13" fill="#C8922A" transform="rotate(10 416 82)"/>
+
+      <!-- Labels grup 1 -->
+      <line x1="140" y1="68" x2="100" y2="40" stroke="#C8922A" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="98" y="36" class="svg-label" fill="#C8922A" text-anchor="end" font-size="11">mugure floare</text>
+      <line x1="158" y1="68" x2="158" y2="40" stroke="#5C3D1E" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="158" y="36" class="svg-label" fill="#5C3D1E" text-anchor="middle" font-size="11">mugure frunze</text>
+      <line x1="176" y1="68" x2="216" y2="40" stroke="#C8922A" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="220" y="36" class="svg-label" fill="#C8922A" font-size="11">mugure floare</text>
+
+      <!-- Label ramura -->
+      <text x="540" y="103" class="svg-label" fill="#8B6242" font-size="12" text-anchor="middle">lăstar</text>
+      <text x="540" y="116" class="svg-label" fill="#8B6242" font-size="12" text-anchor="middle">de 1 an</text>
+
+      <!-- Legendă jos -->
+      <circle cx="140" cy="160" r="7" fill="#C8922A"/>
+      <text x="153" y="164" class="svg-label" fill="#C8922A" font-size="12">Mugure rotund, umflat = FLOARE (rod)</text>
+      <circle cx="140" cy="182" r="5" fill="#5C3D1E"/>
+      <text x="153" y="186" class="svg-label" fill="#5C3D1E" font-size="12">Mugure alungit, ascuțit = FRUNZE (vegetativ)</text>
+    </svg>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Pinten de rod la măr — cum arată și când îl reînnoiești</div>
+    <svg viewBox="0 0 500 180" width="100%" style="max-width:500px">
+      <!-- Ramura semischelet -->
+      <path d="M30,120 Q200,115 470,110" stroke="#8B6242" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+      <!-- Pinten tânăr (2–3 ani) — sănătos -->
+      <path d="M100,113 Q95,85 92,65" stroke="#5C3D1E" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <circle cx="92" cy="62" r="6" fill="#C8922A"/>
+      <circle cx="86" cy="75" r="5" fill="#C8922A"/>
+      <circle cx="97" cy="72" r="4" fill="#E8B040"/>
+      <text x="108" y="68" class="svg-label" fill="#3B6D11" font-size="11" font-weight="500">Tânăr (2–3 ani)</text>
+      <text x="108" y="80" class="svg-label" fill="#3B6D11" font-size="10">✓ Productiv, lasă-l</text>
+
+      <!-- Pinten mediu (4–5 ani) -->
+      <path d="M230,112 Q228,80 224,52 Q222,48 218,45 Q224,42 228,38" stroke="#5C3D1E" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="228" cy="36" r="5" fill="#C8922A"/>
+      <circle cx="218" cy="42" r="4" fill="#C8922A"/>
+      <text x="240" y="48" class="svg-label" fill="#6B5040" font-size="11" font-weight="500">Mediu (4–5 ani)</text>
+      <text x="240" y="60" class="svg-label" fill="#6B5040" font-size="10">~ Ancora productivitate</text>
+
+      <!-- Pinten epuizat (7+ ani) — noduri multe -->
+      <path d="M360,111 Q362,88 366,70 Q364,65 370,60 Q366,55 372,50 Q368,45 374,40 Q370,35 376,30" stroke="#5C3D1E" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="366" cy="68" r="3" fill="#8B6242"/>
+      <circle cx="370" cy="58" r="3" fill="#8B6242"/>
+      <circle cx="372" cy="48" r="3" fill="#8B6242"/>
+      <circle cx="374" cy="38" r="3" fill="#8B6242"/>
+      <circle cx="376" cy="28" r="3" fill="#A32D2D"/>
+      <text x="385" y="35" class="svg-label" fill="#A32D2D" font-size="11" font-weight="500">Epuizat (7+ ani)</text>
+      <text x="385" y="47" class="svg-label" fill="#A32D2D" font-size="10">✗ Taie la bază sau scurt.</text>
+
+      <!-- Indicator scurtare -->
+      <line x1="360" y1="111" x2="360" y2="130" stroke="#A32D2D" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="330" y="148" class="svg-label" fill="#A32D2D" font-size="10">taie la baza</text>
+      <text x="330" y="160" class="svg-label" fill="#A32D2D" font-size="10">sau la 1. mugure veg.</text>
+    </svg>
+  </div>
+
+  <div class="alert alert-info">
+    <strong>Regula de aur:</strong> un pinten epuizat are mulți noduri îngrămădiți, arată "bârnos" și produce fructe mici, rare. Un pinten sănătos e mai lung, mai "aerisit" și are muguri bine dezvoltați. Nu ai nevoie de instrumente — te uiți și simți cu mâna.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECȚIUNEA 3 — CUM TAI CORECT
+═══════════════════════════════════════════ -->
+<div class="section" id="sec-taietura">
+  <div class="prose">
+    <h2>Tehnica tăieturii — detalii esențiale</h2>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Unghiul și poziția tăieturii față de mugure</div>
+    <svg viewBox="0 0 600 260" width="100%" style="max-width:600px">
+
+      <!-- CORECT -->
+      <text x="100" y="22" class="svg-label" fill="#3B6D11" font-weight="500" font-size="13" text-anchor="middle">✓ CORECT</text>
+      <rect x="88" y="60" width="24" height="160" rx="12" fill="#8B6242"/>
+      <!-- Mugure -->
+      <ellipse cx="112" cy="120" rx="10" ry="15" fill="#5C3D1E" transform="rotate(20 112 120)"/>
+      <!-- Tăietură corectă — 45°, la 5mm deasupra mugure -->
+      <line x1="76" y1="105" x2="120" y2="95" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <!-- Săgeată sus -->
+      <path d="M98,80 L98,60 L115,70 L98,80" fill="#3B6D11" opacity="0.7"/>
+      <!-- Distanță indicator -->
+      <line x1="120" y1="95" x2="130" y2="90" stroke="#C8922A" stroke-width="1.5"/>
+      <line x1="112" y1="110" x2="130" y2="95" stroke="#C8922A" stroke-width="1.5"/>
+      <line x1="130" y1="90" x2="130" y2="95" stroke="#C8922A" stroke-width="2"/>
+      <text x="134" y="93" class="svg-label" fill="#C8922A" font-size="10">5mm</text>
+      <!-- Unghi 45° -->
+      <text x="58" y="103" class="svg-label" fill="#3B6D11" font-size="11">45°</text>
+      <text x="50" y="150" class="svg-label" fill="#3B6D11" font-size="11" text-anchor="middle">Creștere</text>
+      <text x="50" y="162" class="svg-label" fill="#3B6D11" font-size="11" text-anchor="middle">spre exterior</text>
+
+      <!-- GREȘIT 1 — prea departe -->
+      <text x="280" y="22" class="svg-label" fill="#A32D2D" font-weight="500" font-size="13" text-anchor="middle">✗ Prea departe</text>
+      <rect x="268" y="60" width="24" height="160" rx="12" fill="#8B6242"/>
+      <ellipse cx="292" cy="130" rx="10" ry="15" fill="#5C3D1E" transform="rotate(20 292 130)"/>
+      <line x1="256" y1="90" x2="300" y2="80" stroke="#A32D2D" stroke-width="3" stroke-linecap="round"/>
+      <!-- Ciot lung -->
+      <rect x="292" y="80" width="6" height="28" rx="3" fill="#A07850" opacity="0.8"/>
+      <text x="302" y="78" class="svg-label" fill="#A32D2D" font-size="10">ciot</text>
+      <text x="302" y="89" class="svg-label" fill="#A32D2D" font-size="10">putrezire →</text>
+      <text x="248" y="150" class="svg-label" fill="#A32D2D" font-size="11" text-anchor="middle">Ciotul</text>
+      <text x="248" y="162" class="svg-label" fill="#A32D2D" font-size="11" text-anchor="middle">moare și</text>
+      <text x="248" y="174" class="svg-label" fill="#A32D2D" font-size="11" text-anchor="middle">infectează</text>
+
+      <!-- GREȘIT 2 — prea aproape -->
+      <text x="460" y="22" class="svg-label" fill="#A32D2D" font-weight="500" font-size="13" text-anchor="middle">✗ Prea aproape</text>
+      <rect x="448" y="60" width="24" height="160" rx="12" fill="#8B6242"/>
+      <ellipse cx="472" cy="130" rx="10" ry="15" fill="#5C3D1E" transform="rotate(20 472 130)"/>
+      <line x1="436" y1="130" x2="480" y2="120" stroke="#A32D2D" stroke-width="3" stroke-linecap="round"/>
+      <!-- X pe mugure -->
+      <line x1="465" y1="118" x2="478" y2="130" stroke="#A32D2D" stroke-width="2.5"/>
+      <line x1="478" y1="118" x2="465" y2="130" stroke="#A32D2D" stroke-width="2.5"/>
+      <text x="430" y="150" class="svg-label" fill="#A32D2D" font-size="11" text-anchor="middle">Mugurul</text>
+      <text x="430" y="162" class="svg-label" fill="#A32D2D" font-size="11" text-anchor="middle">se usucă</text>
+    </svg>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Eliminarea unei ramuri groase — tehnica celor 3 tăieturi</div>
+    <svg viewBox="0 0 600 220" width="100%" style="max-width:600px">
+      <!-- Ramura mama -->
+      <path d="M40,160 Q200,155 560,150" stroke="#5C3D1E" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <path d="M40,160 Q200,155 560,150" stroke="#8B6242" stroke-width="16" fill="none" stroke-linecap="round"/>
+
+      <!-- Collar -->
+      <ellipse cx="200" cy="142" rx="18" ry="14" fill="#7A5030" opacity="0.7"/>
+      <text x="200" y="125" class="svg-label" fill="#C8922A" text-anchor="middle" font-size="11" font-weight="500">collar</text>
+      <line x1="200" y1="128" x2="200" y2="136" stroke="#C8922A" stroke-width="1.5"/>
+
+      <!-- Ramura de eliminat -->
+      <path d="M200,142 Q230,80 250,30" stroke="#5C3D1E" stroke-width="16" fill="none" stroke-linecap="round"/>
+      <path d="M200,142 Q230,80 250,30" stroke="#8B6242" stroke-width="12" fill="none" stroke-linecap="round"/>
+
+      <!-- Tăietura 1 — crestătură de jos, la 30cm -->
+      <line x1="210" y1="120" x2="240" y2="114" stroke="#C8922A" stroke-width="3" stroke-linecap="round"/>
+      <text x="245" y="112" class="svg-label" fill="#C8922A" font-size="11" font-weight="500">① Crestătură de jos</text>
+      <text x="245" y="123" class="svg-label" fill="#C8922A" font-size="10">la ~30cm de collar, 1/3 din grosime</text>
+
+      <!-- Tăietura 2 — de sus, la 35cm -->
+      <line x1="217" y1="105" x2="248" y2="99" stroke="#3B6D11" stroke-width="3" stroke-linecap="round"/>
+      <text x="253" y="97" class="svg-label" fill="#3B6D11" font-size="11" font-weight="500">② Tăietură de sus</text>
+      <text x="253" y="108" class="svg-label" fill="#3B6D11" font-size="10">la ~35cm — ramura cade fără să smulgă</text>
+
+      <!-- Ramura cazuta indicator -->
+      <path d="M220,108 Q280,140 320,170" stroke="#8B6242" stroke-width="6" fill="none" stroke-dasharray="6,4" opacity="0.5"/>
+      <text x="325" y="174" class="svg-label" fill="#8B6242" font-size="10" opacity="0.7">ramura cade</text>
+
+      <!-- Tăietura 3 — la collar -->
+      <line x1="202" y1="135" x2="232" y2="128" stroke="#A32D2D" stroke-width="3" stroke-linecap="round"/>
+      <text x="237" y="134" class="svg-label" fill="#A32D2D" font-size="11" font-weight="500">③ Tăietură finală la collar</text>
+      <text x="237" y="145" class="svg-label" fill="#A32D2D" font-size="10">0cm ciot — celulele de calusare sunt aici</text>
+    </svg>
+  </div>
+
+  <div class="alert alert-warn">
+    <strong>De ce collar?</strong> Inelul de ramificare (collar) conține celule specializate care "știu" să formeze calusul (țesut cicatrizant). Dacă lași un ciot, aceste celule nu pot ajunge la suprafața rănii și lemnul putrezește spre interior. Dacă intri în ramura mamă, faci o rană mai mare și mai greu de vindecat.
+  </div>
+
+  <div class="prose">
+    <h2>Dezinfecție și mastic</h2>
+    <p><strong>Dezinfectează foarfeca</strong> cu alcool 70% sau cu o soluție de înălbitor 10% între fiecare pom și obligatoriu dacă ai tăiat ramuri bolnave. La cireș, dezinfectează chiar între fiecare tăietură — boala bacteriană se transmite prin lama foarfecii.</p>
+    <p><strong>Mastică de pomi</strong> — aplică pe toate tăieturile mai mari de 2 cm, imediat după tăietură. La cireș, de la 1 cm. Scopul e să sigilezi rana înainte să se contamineze, nu să o "vindeci" — vindecarea e treaba pomului.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">Foarfecă de tăiat</div>
+      <div class="card-body">Pentru ramuri până la 2–2,5 cm diametru. Lama trebuie să fie spre ramura de păstrat, nu spre ciot — altfel strivești țesuturile pe care vrei să le protejezi.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Ferăstrău de grădină</div>
+      <div class="card-body">Pentru ramuri peste 2,5 cm. Nu folosi ferăstrău cu lanț pentru tăieturi de finisaj — vibrațiile smulg scoarța. Ferăstrăul de mână cu dinți fini e ideal.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cosor / cuțit de altoit</div>
+      <div class="card-body">Util pentru finisarea tăieturilor pe lemnul mare — netezești marginile zimțate ale tăieturii de ferăstrău pentru o vindecare mai rapidă.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Când NU folosi foarfeca</div>
+      <div class="card-body">Ramuri mai groase de 2 cm tăiate cu foarfeca → rana zdrobită, scoarța crapă. Folosește ferăstrăul și finisează cu cuțitul.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECȚIUNEA 4 — POM NEÎNGRIJIT
+═══════════════════════════════════════════ -->
+<div class="section" id="sec-neglect">
+  <div class="prose">
+    <h2>Pomul neîngrijit — plan de recuperare pe ani</h2>
+    <p>Un pom cu mulți ani fără tăiere nu se recuperează dintr-o dată. Intervenția bruscă și masivă (tăierea a peste 30% în același an) declanșează o explozie de lăstari lacomi care înrăutățesc situația. Ai nevoie de un plan pe 3 ani.</p>
+  </div>
+
+  <div class="alert alert-danger">
+    <strong>Regula absolută:</strong> maxim 25–30% din volumul coroanei într-un singur an. Dacă ai de tăiat mai mult, distribui pe 2–3 ani.
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">Anul 1</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <div class="tl-title">Curățenie mare — prioritizezi problemele grave</div>
+        <div class="tl-body">
+          <strong>1.</strong> Elimini tot ce e mort, bolnav sau rupt — fără limită, indiferent câtă masă e.<br>
+          <strong>2.</strong> Elimini toți lăstarii lacomi (verticali, viguroși, din trunchi).<br>
+          <strong>3.</strong> Elimini ramurile care cresc spre interiorul coroanei.<br>
+          <strong>4.</strong> Elimini ramurile care se încrucișează sau se freacă.<br>
+          <strong>5.</strong> Te oprești când ai ajuns la 25–30% din coroană eliminat.<br>
+          <em>Nu scurtezi și nu reînnoiești pintenii în primul an — e prea mult stres pentru pom.</em>
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">Anul 2</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <div class="tl-title">Reechilibrare — structura coroanei</div>
+        <div class="tl-body">
+          <strong>1.</strong> Scurtezi ramurile de semischelet care au crescut prea lungi sau dezechilibrate.<br>
+          <strong>2.</strong> Reînnoiești pintenașii epuizați (mai vechi de 6–8 ani la măr/păr).<br>
+          <strong>3.</strong> Continui să elimini lăstarii lacomi apăruți din tăierile anului trecut (vor fi mulți).<br>
+          <strong>4.</strong> Echilibrezi ramurile de schelet dacă una a crescut dominant.
+        </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">Anul 3</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <div class="tl-title">Întreținere normală anuală</div>
+        <div class="tl-body">
+          Intri în regimul normal de tăiere anuală moderată. Pomul a reformat o structură curată — acum menții, nu mai recuperezi. Intervenție anuală de 10–15% din coroană e suficientă.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Ordinea deciziilor la fiecare ramură — diagrama de decizie</div>
+    <svg viewBox="0 0 580 420" width="100%" style="max-width:580px">
+      <!-- Start -->
+      <rect x="220" y="10" width="140" height="36" rx="18" fill="#5C3D1E"/>
+      <text x="290" y="33" class="svg-label" fill="#F5E8D0" text-anchor="middle" font-weight="500">Ramură nouă?</text>
+      <line x1="290" y1="46" x2="290" y2="66" stroke="#8B6242" stroke-width="1.5"/>
+
+      <!-- Moartă/bolnavă -->
+      <rect x="195" y="66" width="190" height="36" rx="8" fill="#F5F0E8" stroke="#8B6242" stroke-width="1"/>
+      <text x="290" y="82" class="svg-label" fill="#5C3D1E" text-anchor="middle">E moartă, bolnavă sau ruptă?</text>
+      <text x="290" y="94" class="svg-label" fill="#5C3D1E" text-anchor="middle" font-size="10">(lemn brunificat, scoarță crăpată, vârf uscat)</text>
+
+      <line x1="195" y1="84" x2="120" y2="84" stroke="#A32D2D" stroke-width="1.5"/>
+      <rect x="30" y="68" width="88" height="32" rx="6" fill="#A32D2D"/>
+      <text x="74" y="88" class="svg-label" fill="#fff" text-anchor="middle" font-weight="500">TAIE</text>
+      <text x="100" y="78" class="svg-label" fill="#A32D2D" font-size="10">DA →</text>
+
+      <line x1="290" y1="102" x2="290" y2="122" stroke="#8B6242" stroke-width="1.5"/>
+      <text x="296" y="115" class="svg-label" fill="#3B6D11" font-size="10">NU ↓</text>
+
+      <!-- Lacom -->
+      <rect x="195" y="122" width="190" height="36" rx="8" fill="#F5F0E8" stroke="#8B6242" stroke-width="1"/>
+      <text x="290" y="138" class="svg-label" fill="#5C3D1E" text-anchor="middle">E verticală și viguroasă</text>
+      <text x="290" y="150" class="svg-label" fill="#5C3D1E" text-anchor="middle" font-size="10">(lăstar lacom din trunchi/schelet)?</text>
+
+      <line x1="195" y1="140" x2="120" y2="140" stroke="#A32D2D" stroke-width="1.5"/>
+      <rect x="30" y="124" width="88" height="32" rx="6" fill="#A32D2D"/>
+      <text x="74" y="144" class="svg-label" fill="#fff" text-anchor="middle" font-weight="500">TAIE</text>
+      <text x="100" y="134" class="svg-label" fill="#A32D2D" font-size="10">DA →</text>
+
+      <line x1="290" y1="158" x2="290" y2="178" stroke="#8B6242" stroke-width="1.5"/>
+      <text x="296" y="171" class="svg-label" fill="#3B6D11" font-size="10">NU ↓</text>
+
+      <!-- Interior -->
+      <rect x="195" y="178" width="190" height="36" rx="8" fill="#F5F0E8" stroke="#8B6242" stroke-width="1"/>
+      <text x="290" y="194" class="svg-label" fill="#5C3D1E" text-anchor="middle">Crește spre interior</text>
+      <text x="290" y="206" class="svg-label" fill="#5C3D1E" text-anchor="middle" font-size="10">sau se încrucișează cu alta?</text>
+
+      <line x1="195" y1="196" x2="120" y2="196" stroke="#A32D2D" stroke-width="1.5"/>
+      <rect x="30" y="180" width="88" height="32" rx="6" fill="#A32D2D"/>
+      <text x="74" y="200" class="svg-label" fill="#fff" text-anchor="middle" font-weight="500">TAIE</text>
+      <text x="100" y="190" class="svg-label" fill="#A32D2D" font-size="10">DA →</text>
+
+      <line x1="290" y1="214" x2="290" y2="234" stroke="#8B6242" stroke-width="1.5"/>
+      <text x="296" y="227" class="svg-label" fill="#3B6D11" font-size="10">NU ↓</text>
+
+      <!-- Umbrea? -->
+      <rect x="195" y="234" width="190" height="36" rx="8" fill="#F5F0E8" stroke="#8B6242" stroke-width="1"/>
+      <text x="290" y="250" class="svg-label" fill="#5C3D1E" text-anchor="middle">Umbrește ramuri de rod</text>
+      <text x="290" y="262" class="svg-label" fill="#5C3D1E" text-anchor="middle" font-size="10">dedesubt sau alături?</text>
+
+      <line x1="195" y1="252" x2="120" y2="252" stroke="#A32D2D" stroke-width="1.5"/>
+      <rect x="30" y="236" width="88" height="32" rx="6" fill="#A32D2D"/>
+      <text x="74" y="256" class="svg-label" fill="#fff" text-anchor="middle" font-weight="500">TAIE</text>
+      <text x="100" y="246" class="svg-label" fill="#A32D2D" font-size="10">DA →</text>
+
+      <line x1="290" y1="270" x2="290" y2="290" stroke="#8B6242" stroke-width="1.5"/>
+      <text x="296" y="283" class="svg-label" fill="#3B6D11" font-size="10">NU ↓</text>
+
+      <!-- Ai atins 25%? -->
+      <rect x="195" y="290" width="190" height="36" rx="8" fill="#F5F0E8" stroke="#8B6242" stroke-width="1"/>
+      <text x="290" y="306" class="svg-label" fill="#5C3D1E" text-anchor="middle">Ai eliminat deja 25–30%</text>
+      <text x="290" y="318" class="svg-label" fill="#5C3D1E" text-anchor="middle" font-size="10">din coroana totală?</text>
+
+      <line x1="385" y1="308" x2="460" y2="308" stroke="#A32D2D" stroke-width="1.5"/>
+      <rect x="462" y="292" width="100" height="32" rx="6" fill="#C8922A"/>
+      <text x="512" y="312" class="svg-label" fill="#fff" text-anchor="middle" font-weight="500">OPREȘTE-TE</text>
+      <text x="390" y="302" class="svg-label" fill="#A32D2D" font-size="10">DA →</text>
+
+      <line x1="290" y1="326" x2="290" y2="346" stroke="#8B6242" stroke-width="1.5"/>
+      <text x="296" y="339" class="svg-label" fill="#3B6D11" font-size="10">NU ↓</text>
+
+      <!-- Lasă -->
+      <rect x="210" y="346" width="160" height="36" rx="8" fill="#3B6D11"/>
+      <text x="290" y="369" class="svg-label" fill="#F5E8D0" text-anchor="middle" font-weight="500">LASĂ — e utilă</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECȚIUNEA 5 — MUGURI
+═══════════════════════════════════════════ -->
+<div class="section" id="sec-muguri">
+  <div class="prose">
+    <h2>Cum recunoști mugurii — esențial înainte de tăiere</h2>
+    <p>Înainte de orice tăiere, identifică tipul de muguri de pe ramura pe care urmează s-o tai. Dacă tai o ramură plină de muguri de rod, pierzi producția unui an.</p>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Tip mugure</th><th>Aspect</th><th>Poziție</th><th>Ce produce</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Mugure vegetativ</strong></td>
+        <td>Alungit, ascuțit, aplatizat, lipit de ramură</td>
+        <td>Terminal sau lateral</td>
+        <td>Lăstar și frunze — creștere, nu rod</td>
+      </tr>
+      <tr>
+        <td><strong>Mugure de rod (floral)</strong></td>
+        <td>Rotund, umflat, mai mare, "pufos" la unele specii</td>
+        <td>Lateral, pe pinteni sau lăstari de rod</td>
+        <td>Floare → fruct</td>
+      </tr>
+      <tr>
+        <td><strong>Mugure mixt</strong></td>
+        <td>Rotund, mare — produce și floare și lăstar</td>
+        <td>Terminal la păr și gutui</td>
+        <td>Floare + lăstar în același timp</td>
+      </tr>
+      <tr>
+        <td><strong>Grupul triplu (piersic)</strong></td>
+        <td>2 muguri rotunzi flancând 1 mugure alungit central</td>
+        <td>Lateral pe lăstari de 1 an</td>
+        <td>Muguri laterali = flori, central = frunze</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="diagram-wrap">
+    <div class="diagram-title">Diferența vizuală dintre muguri — comparație</div>
+    <svg viewBox="0 0 560 160" width="100%" style="max-width:560px">
+      <!-- Ramura 1 — muguri vegetativi -->
+      <rect x="30" y="80" width="120" height="12" rx="6" fill="#8B6242"/>
+      <ellipse cx="70" cy="75" rx="6" ry="12" fill="#3B6D11" transform="rotate(-15 70 75)"/>
+      <ellipse cx="100" cy="73" rx="6" ry="12" fill="#3B6D11" transform="rotate(-15 100 73)"/>
+      <ellipse cx="130" cy="74" rx="6" ry="11" fill="#3B6D11" transform="rotate(-15 130 74)"/>
+      <text x="90" y="110" class="svg-label" fill="#3B6D11" text-anchor="middle" font-size="11" font-weight="500">Muguri vegetativi</text>
+      <text x="90" y="123" class="svg-label" fill="#6B5040" text-anchor="middle" font-size="10">alungiți, ascuțiți, lipiți</text>
+
+      <!-- Ramura 2 — muguri florali -->
+      <rect x="210" y="80" width="120" height="12" rx="6" fill="#8B6242"/>
+      <circle cx="250" cy="72" r="9" fill="#C8922A"/>
+      <circle cx="280" cy="70" r="10" fill="#C8922A"/>
+      <circle cx="310" cy="71" r="8" fill="#C8922A"/>
+      <text x="270" y="110" class="svg-label" fill="#C8922A" text-anchor="middle" font-size="11" font-weight="500">Muguri florali (rod)</text>
+      <text x="270" y="123" class="svg-label" fill="#6B5040" text-anchor="middle" font-size="10">rotunzi, umflați, mai mari</text>
+
+      <!-- Ramura 3 — triplet piersic -->
+      <rect x="390" y="80" width="120" height="12" rx="6" fill="#8B6242"/>
+      <!-- grup 1 -->
+      <circle cx="425" cy="71" r="8" fill="#C8922A"/>
+      <ellipse cx="437" cy="69" rx="5" ry="10" fill="#3B6D11" transform="rotate(-10 437 69)"/>
+      <circle cx="449" cy="71" r="8" fill="#C8922A"/>
+      <!-- grup 2 -->
+      <circle cx="468" cy="72" r="7" fill="#C8922A"/>
+      <ellipse cx="479" cy="70" rx="5" ry="9" fill="#3B6D11" transform="rotate(-10 479 70)"/>
+      <circle cx="490" cy="72" r="7" fill="#C8922A"/>
+      <text x="458" y="110" class="svg-label" fill="#5C3D1E" text-anchor="middle" font-size="11" font-weight="500">Triplet piersic</text>
+      <text x="458" y="123" class="svg-label" fill="#6B5040" text-anchor="middle" font-size="10">floare·frunze·floare</text>
+    </svg>
+  </div>
+
+  <div class="alert alert-success">
+    <strong>Trucul practic:</strong> dacă nu ești sigur ce tip de mugure e, apasă ușor cu unghia — mugurul floral e moale și pufos, mugurul vegetativ e tare și ferm. La piersic, recunoști imediat grupul triplu: doi muguri rotunzi flancând unul alungit.
+  </div>
+
+  <div class="prose">
+    <h2>Unde să tai — deasupra cărui mugure</h2>
+    <p>Când scurtezi o ramură (nu o elimini complet), <strong>întotdeauna tai deasupra unui mugure orientat spre exterior</strong> — adică spre afara coroanei, nu spre centru. Lăstarul care va crește din acel mugure va continua în direcția în care e orientat mugurul. Dacă tai deasupra unui mugure orientat spre interior, lăstarul nou va crește spre centrul coroanei și va trebui să îl elimini în anul următor.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECȚIUNEA 6 — GREȘELI
+═══════════════════════════════════════════ -->
+<div class="section" id="sec-greseli">
+  <div class="prose">
+    <h2>Cele mai frecvente greșeli — și cum le eviți</h2>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-tag tag-bad">Greșeală #1</span>
+      <div class="card-title">Tăierea în toamnă sau iarna devreme</div>
+      <div class="card-body">Rănile din repaus vegetativ se vindecă greu și se infectează ușor. La cireș e interzis. La restul — taie primăvara, când zemurile circulă și vindecarea e rapidă.</div>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-bad">Greșeală #2</span>
+      <div class="card-title">Lăsarea cioturilor</div>
+      <div class="card-body">Orice ciot rămas după tăiere moare și putrezește spre interior. Tăierea corectă e la collar — 0 cm ciot. Nu la 2 cm, nu la 5 cm. Zero.</div>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-bad">Greșeală #3</span>
+      <div class="card-title">Tăierea prea agresivă dintr-o dată</div>
+      <div class="card-body">Elimini peste 30% → explozie de lăstari lacomi → coroana devine mai deasă decât înainte. Maxim 25–30% pe an și distribui pe 2–3 ani dacă pomul e neglijat.</div>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-bad">Greșeală #4</span>
+      <div class="card-title">Tăierea gutuiului și kakiului scurtând lăstarii de 1 an</div>
+      <div class="card-body">Gutuiul rodește pe vârful lăstarilor de 1 an. Kakiul — la fel. Dacă scurtezi acei lăstari, tai producția anului curent. La aceste specii tăierea e minimă și nu atinge lăstarii noi.</div>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-bad">Greșeală #5</span>
+      <div class="card-title">Foarfeca neascuțită sau nesterilizată</div>
+      <div class="card-body">O lamă tocită zdrobește țesuturile în loc să le taie — rana se vindecă de 3× mai greu. Lama nesterilizată transferă boli bacteriene direct în rană. Ascute și dezinfectează înainte de fiecare pom.</div>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-bad">Greșeală #6</span>
+      <div class="card-title">Uitarea lăstarilor lacomi</div>
+      <div class="card-body">Lăstarii lacomi cresc rapid și umbreasc toată coroana. Verifică pomii și în august–septembrie pentru lăstari lacomi apăruți vara — îi elimini atunci, nu aștepți primăvara.</div>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-bad">Greșeală #7</span>
+      <div class="card-title">Tăierea cireșului primăvara devreme</div>
+      <div class="card-body">Chiar dacă e pom tânăr plantat în toamnă, NU tai cireșul în februarie–martie. Aștepți înflorirea completă (aprilie) și abia atunci intervii. Rănile din repaus = cancer bacterian garantat.</div>
+    </div>
+    <div class="card">
+      <span class="card-tag tag-bad">Greșeală #8</span>
+      <div class="card-title">Ignorarea formei din primii 3 ani</div>
+      <div class="card-body">Primii 3 ani sunt cei mai importanți. Scheletul format greșit nu se mai corectează ușor ulterior. Investești 20 de minute pe an în tăierea de formare și economisești ani de intervenții corective.</div>
+    </div>
+  </div>
+
+  <div class="alert alert-success">
+    <strong>Testul final al coroanei:</strong> după tăiere, pune-te la 5m distanță și privește pomul spre cer. Dacă vezi lumina pătrunzând prin coroană în mai multe locuri — ai tăiat bine. Dacă coroana arată ca un zid compact — mai ai de lucru. Dacă e aproape goală — ai tăiat prea mult.
+  </div>
+</div>
+
+<script>
+const tabs = document.querySelectorAll('.nav-tab');
+const sections = document.querySelectorAll('.section');
+
+tabs.forEach(t => {
+  t.addEventListener('click', () => {
+    const sec = t.dataset.sec;
+    tabs.forEach(x => x.classList.remove('active'));
+    sections.forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('sec-' + sec).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
