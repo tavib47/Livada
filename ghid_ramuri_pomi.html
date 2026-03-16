@@ -4,86 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ghid Ramuri Pomi Fructiferi</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <link rel="icon" href="favicon.ico">
 <style>
 :root {
-  --bark:    #8B6242;
-  --bark-dk: #5C3D1E;
-  --leaf:    #3B6D11;
-  --leaf-lt: #7AAD3A;
-  --gold:    #C8922A;
-  --gold-lt: #F0C85A;
   --red:     #A32D2D;
   --red-lt:  #E07070;
   --blue:    #1A5276;
   --sky:     #D6EAF8;
-
-  --bg:      #FDFAF5;
-  --bg2:     #F5F0E8;
-  --bg3:     #EDE6D8;
-  --ink:     #2C1F0E;
-  --ink2:    #6B5040;
-  --ink3:    #A0876A;
-  --border:  #D4C4A8;
-
-  --font-display: 'Lora', Georgia, serif;
-  --font-body:    'DM Sans', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:    #1A1510;
-    --bg2:   #231D15;
-    --bg3:   #2E2518;
-    --ink:   #F0E8D8;
-    --ink2:  #C4A882;
-    --ink3:  #8A7055;
-    --border:#3D3020;
-  }
-}
+body { font-size: 15px; line-height: 1.7; }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: var(--font-body);
-  font-size: 15px;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.7;
-}
-
-/* ── HEADER ── */
-.header {
-  background: var(--bark-dk);
-  padding: 2.5rem 2rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-.header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    45deg, transparent, transparent 20px,
-    rgba(255,255,255,0.015) 20px, rgba(255,255,255,0.015) 40px
-  );
-}
-.header-inner { position: relative; max-width: 900px; margin: 0 auto; }
-.header h1 {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  color: #F5E8D0;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-.header p {
-  color: #C4A882;
-  font-size: 14px;
-  margin-top: 6px;
-  font-weight: 300;
-}
 
 /* ── NAV TABS ── */
 .nav-tabs {
@@ -111,7 +43,7 @@ body {
   font-family: var(--font-body);
 }
 .nav-tab:hover { color: var(--ink2); }
-.nav-tab.active { color: var(--bark-dk); border-bottom-color: var(--bark-dk); font-weight: 500; }
+.nav-tab.active { color: var(--bark); border-bottom-color: var(--bark); font-weight: 500; }
 @media (prefers-color-scheme: dark) {
   .nav-tab.active { color: var(--gold-lt); border-bottom-color: var(--gold-lt); }
 }
@@ -125,7 +57,7 @@ body {
   font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--bark-dk);
+  color: var(--bark);
   margin: 2rem 0 0.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border);
@@ -273,7 +205,7 @@ svg { display: block; margin: 0 auto; }
   transition: all 0.15s;
 }
 .prune-btn:hover { background: var(--bg3); }
-.prune-btn.sel { background: var(--bark-dk); color: #F5E8D0; border-color: var(--bark-dk); }
+.prune-btn.sel { background: var(--bark); color: #F5E8D0; border-color: var(--bark); }
 .prune-result {
   background: var(--bg);
   border: 1px solid var(--border);
@@ -302,7 +234,7 @@ svg { display: block; margin: 0 auto; }
   right: -1px; top: 18px;
   width: 10px; height: 10px;
   border-radius: 50%;
-  background: var(--bark);
+  background: var(--bark-md);
   border: 2px solid var(--bg2);
   z-index: 1;
 }
@@ -318,14 +250,25 @@ svg { display: block; margin: 0 auto; }
 .tl-title { font-weight: 500; font-size: 14px; margin-bottom: 4px; }
 .tl-body { font-size: 13px; color: var(--ink2); line-height: 1.55; }
 
+
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-inner">
+<nav class="main-nav">
+  <a href="index.html" class="nav-brand">Livada Mea</a>
+  <div class="nav-links">
+    <a href="tabel_taieri_livada.html" class="nav-link">Tabel tăieri</a>
+    <a href="ghid_taieri_pomi.html" class="nav-link">Ghid tăieri</a>
+    <a href="ghid_ramuri_pomi.html" class="nav-link active">Anatomie</a>
+    <a href="harta_livada.html" class="nav-link">Hartă</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div>
     <h1>Anatomia pomului fructifer</h1>
-    <p>Ghid vizual — ramuri, structură, tăiere corectă</p>
+    <div class="page-header-sub">Ghid vizual — ramuri, structură, tăiere corectă</div>
   </div>
 </div>
 

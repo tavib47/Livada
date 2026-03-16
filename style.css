@@ -1,0 +1,121 @@
+/* ══════════════════════════════════════════════════════════
+   Livada Mea — Shared Stylesheet
+   ══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── DESIGN TOKENS ── */
+:root {
+  /* Earthy palette */
+  --bark:     #5C3D1E;
+  --bark-md:  #8B6242;
+  --bark-lt:  #C4A882;
+  --leaf:     #3B6D11;
+  --leaf-lt:  #7AAD3A;
+  --gold:     #C8922A;
+  --gold-lt:  #F0C85A;
+
+  /* Backgrounds */
+  --bg:       #FDFAF5;
+  --bg2:      #F5F0E8;
+  --bg3:      #EDE6D8;
+
+  /* Text */
+  --ink:      #2C1F0E;
+  --ink2:     #6B5040;
+  --ink3:     #A0876A;
+
+  /* Borders */
+  --border:   rgba(92,61,30,0.15);
+  --border-md: rgba(92,61,30,0.28);
+
+  /* Fonts */
+  --font-display: 'Lora', Georgia, serif;
+  --font-body:    'DM Sans', -apple-system, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #141008;
+    --bg2:      #1E1710;
+    --bg3:      #282018;
+    --ink:      #F0E8D8;
+    --ink2:     #C4A882;
+    --ink3:     #7A6050;
+    --border:   rgba(200,168,130,0.12);
+    --border-md: rgba(200,168,130,0.25);
+  }
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── MAIN NAV ── */
+.main-nav {
+  background: var(--bark);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  min-height: 44px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #F5E8D0;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  margin-right: auto;
+}
+.nav-links {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: #C4A882;
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 20px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.nav-link:hover { background: rgba(255,255,255,0.1); color: #F5E8D0; }
+.nav-link.active { background: rgba(255,255,255,0.15); color: #F5E8D0; font-weight: 500; }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: var(--bark);
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #F5E8D0;
+}
+.page-header-sub {
+  font-size: 12px;
+  color: #C4A882;
+  margin-top: 2px;
+}

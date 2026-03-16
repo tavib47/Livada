@@ -4,46 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Livada Mea — Ghid Complet</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <link rel="icon" href="favicon.ico">
 <style>
-:root {
-  --bark:     #5C3D1E;
-  --bark-md:  #8B6242;
-  --bark-lt:  #C4A882;
-  --leaf:     #3B6D11;
-  --leaf-lt:  #7AAD3A;
-  --gold:     #C8922A;
-  --gold-lt:  #F0C85A;
-  --cream:    #FDFAF5;
-  --cream2:   #F5F0E8;
-  --cream3:   #EDE6D8;
-  --ink:      #2C1F0E;
-  --ink2:     #6B5040;
-  --ink3:     #A0876A;
-  --border:   rgba(92,61,30,0.15);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --cream:  #141008;
-    --cream2: #1E1710;
-    --cream3: #282018;
-    --ink:    #F0E8D8;
-    --ink2:   #C4A882;
-    --ink3:   #7A6050;
-    --border: rgba(200,168,130,0.12);
-  }
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
 body {
-  font-family: 'DM Sans', -apple-system, sans-serif;
-  background: var(--cream);
-  color: var(--ink);
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -102,7 +66,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--cream3);
+  background: var(--bg3);
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 5px 14px;
@@ -214,7 +178,7 @@ body {
 }
 
 .app-card {
-  background: var(--cream2);
+  background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 0;
@@ -286,7 +250,7 @@ body {
   font-size: 11px;
   padding: 3px 9px;
   border-radius: 20px;
-  background: var(--cream3);
+  background: var(--bg3);
   color: var(--ink3);
   border: 1px solid var(--border);
 }
@@ -366,7 +330,7 @@ body {
 }
 @media (max-width: 480px) { .tips-grid { grid-template-columns: 1fr; } }
 .tip {
-  background: var(--cream2);
+  background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 12px 14px;
@@ -384,9 +348,19 @@ body {
   color: var(--ink3);
   border-top: 1px solid var(--border);
 }
+
 </style>
 </head>
 <body>
+<nav class="main-nav">
+  <a href="index.html" class="nav-brand">Livada Mea</a>
+  <div class="nav-links">
+    <a href="tabel_taieri_livada.html" class="nav-link">Tabel tăieri</a>
+    <a href="ghid_taieri_pomi.html" class="nav-link">Ghid tăieri</a>
+    <a href="ghid_ramuri_pomi.html" class="nav-link">Anatomie</a>
+    <a href="harta_livada.html" class="nav-link">Hartă</a>
+  </div>
+</nav>
 
 <!-- ══ HERO ══ -->
 <section class="hero">

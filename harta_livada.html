@@ -4,20 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harta Livezii — Gruiu, Ilfov</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <link rel="icon" href="favicon.ico">
 <style>
 :root {
   --bg:       #F5F0E8;
-  --bg2:      #EDE6D8;
-  --bg3:      #E2D8C8;
-  --ink:      #2C1F0E;
-  --ink2:     #6B5040;
-  --ink3:     #A0876A;
-  --border:   rgba(92,61,30,0.15);
   --border2:  rgba(92,61,30,0.28);
-  --bark:     #5C3D1E;
-  --bark-lt:  #8B6242;
 
   /* Species colors */
   --mar:      #3B6D11;
@@ -37,42 +29,15 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:    #141008;
-    --bg2:   #1E1710;
-    --bg3:   #282018;
-    --ink:   #F0E8D8;
-    --ink2:  #C4A882;
-    --ink3:  #7A6050;
-    --border: rgba(200,168,130,0.12);
     --border2: rgba(200,168,130,0.25);
   }
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--ink);
   min-height: 100vh;
 }
 
 /* ── HEADER ── */
-.header {
-  background: var(--bark);
-  padding: 1.2rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.header h1 {
-  font-family: 'Lora', serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #F5E8D0;
-}
-.header-sub { font-size: 12px; color: #C4A882; margin-top: 2px; }
 .header-right { display: flex; gap: 8px; align-items: center; }
 .zoom-btn {
   width: 32px; height: 32px; border-radius: 8px;
@@ -112,7 +77,7 @@ body {
 /* ── MAIN LAYOUT ── */
 .main-layout {
   display: flex;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 144px);
   overflow: hidden;
 }
 
@@ -452,14 +417,25 @@ body {
   height: 44px;
   opacity: 0.5;
 }
+
 </style>
 </head>
 <body>
 
-<div class="header">
+<nav class="main-nav">
+  <a href="index.html" class="nav-brand">Livada Mea</a>
+  <div class="nav-links">
+    <a href="tabel_taieri_livada.html" class="nav-link">Tabel tăieri</a>
+    <a href="ghid_taieri_pomi.html" class="nav-link">Ghid tăieri</a>
+    <a href="ghid_ramuri_pomi.html" class="nav-link">Anatomie</a>
+    <a href="harta_livada.html" class="nav-link active">Hartă</a>
+  </div>
+</nav>
+
+<div class="page-header">
   <div>
-    <h1>🌳 Livada — Gruiu, Ilfov</h1>
-    <div class="header-sub">Hartă interactivă · 25 pomi fructiferi + 11 arbori ornamentali</div>
+    <h1>Harta livezii</h1>
+    <div class="page-header-sub">Hartă interactivă · 25 pomi fructiferi · Gruiu, Ilfov</div>
   </div>
   <div class="header-right">
     <button class="zoom-btn" id="zoomOut" title="Micșorează">−</button>
