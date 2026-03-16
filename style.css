@@ -2,7 +2,7 @@
    Livada Mea — Shared Stylesheet
    ══════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ── DESIGN TOKENS ── */
 :root {
@@ -31,7 +31,7 @@
 
   /* Fonts */
   --font-display: 'Lora', Georgia, serif;
-  --font-body:    'DM Sans', -apple-system, sans-serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -68,12 +68,12 @@ body {
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  min-height: 44px;
+  min-height: 50px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .nav-brand {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #F5E8D0;
   text-decoration: none;
@@ -87,10 +87,10 @@ body {
 }
 .nav-link {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 14px;
   color: #C4A882;
   text-decoration: none;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 20px;
   transition: all 0.15s;
   white-space: nowrap;
@@ -110,12 +110,12 @@ body {
 }
 .page-header h1 {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   font-weight: 600;
   color: #F5E8D0;
 }
 .page-header-sub {
-  font-size: 12px;
+  font-size: 14px;
   color: #C4A882;
   margin-top: 2px;
 }
@@ -127,21 +127,21 @@ body {
     min-height: 40px;
   }
   .nav-brand {
-    font-size: 0.9rem;
+    font-size: 1rem;
     padding: 0.4rem 0;
   }
   .nav-links { gap: 1px; }
   .nav-link {
     padding: 4px 8px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .page-header {
     padding: 0.8rem 1rem;
   }
   .page-header h1 {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
   }
   .page-header-sub {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
