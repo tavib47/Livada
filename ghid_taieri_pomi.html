@@ -72,7 +72,16 @@ p.body-text{font-size:13px;margin-bottom:8px}
 .num-kaki{background:#faeeda;color:#633806}
 .num-rodiu{background:#fbeaf0;color:#72243e}
 
-@media(max-width:500px){.two-col{grid-template-columns:1fr}}
+@media (max-width: 600px) {
+  div[style*="padding:1.5rem"] { padding: 0.75rem !important; }
+  .species-grid { gap: 5px; }
+  .sp-btn { padding: 4px 10px; font-size: 12px; }
+  .card { padding: 1rem; }
+  .card-title { font-size: 14px; }
+  .two-col { grid-template-columns: 1fr; }
+  .step { gap: 8px; }
+  .alert { padding: 8px 10px; font-size: 12px; }
+}
 
 </style>
 </head>

@@ -173,7 +173,7 @@ body {
 /* ── APP CARDS ── */
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 20px;
 }
 
@@ -328,7 +328,16 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
-@media (max-width: 480px) { .tips-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) {
+  .tips-grid { grid-template-columns: 1fr; }
+  .hero { padding: 3rem 1.2rem 4rem; min-height: 90vh; }
+  .hero-subtitle { margin-bottom: 2rem; }
+  .cards-section { padding: 3rem 1rem 4rem; }
+  .tips-section { padding: 0 1rem 4rem; }
+  .card-banner { height: 110px; }
+  .card-body-inner { padding: 1rem 1rem 1.2rem; }
+  .scroll-hint { bottom: 1.5rem; }
+}
 .tip {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -391,7 +400,7 @@ body {
     <h2 class="section-title">Alege ghidul de care ai nevoie</h2>
   </div>
 
-  <div class="app-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))">
+  <div class="app-grid">
 
     <!-- Card 1 — Tabel tăieri -->
     <a class="app-card" href="tabel_taieri_livada.html">
