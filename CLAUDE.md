@@ -15,6 +15,10 @@ Four standalone HTML files with all CSS and JS inlined (no build system, no fram
 - **ghid_taieri_pomi.html** — Detailed pruning instructions per species with tab-style navigation. Uses system fonts. JS toggles `.content` sections by species.
 - **ghid_ramuri_pomi.html** — Visual anatomy guide with inline SVG diagrams. Uses Google Fonts (Lora + DM Sans). Largest file (~54KB) due to extensive SVG illustrations.
 
+## Deployment
+
+The site is deployed via **GitHub Pages** from the `main` branch at https://tavib47.github.io/Livada/. Any push to `main` automatically updates the live site (no build step needed).
+
 ## Development
 
 No build, lint, or test commands — open any HTML file directly in a browser.
