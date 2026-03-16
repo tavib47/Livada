@@ -135,10 +135,6 @@ body {
   background: #C8B890;
   border: 1.5px solid #A09070;
 }
-.cell.path {
-  background: #D8C8A8;
-  border: none;
-}
 .cell.gate-cell {
   background: transparent;
   border: 2px dashed #8B6242;
@@ -150,7 +146,6 @@ body {
   .cell.house { background: #3A3020; border-color: #5A4A30; }
   .cell.house-roof { background: #5A3010; border-color: #7A4A18; }
   .cell.annex { background: #302818; border-color: #4A3820; }
-  .cell.path { background: #2A2218; }
   .cell.gate-cell { border-color: #6A4A28; }
 }
 
@@ -567,205 +562,130 @@ body {
 <script>
 // ── TREE DATA ──────────────────────────────────────────────────────────────
 // From Excel "Livada" sheet + "Pomi fructiferi" details
-// Grid: row 0–7 (top to bottom), col 0–12 (left to right)
-
-const TREES = [
-  // row 0 (top)
-  { r:0, c:7,  key:'kaki',    pom:'Kaki',    soi:'Fuyu',                emoji:'🟠', color:'var(--kaki)',
-    taierePrim:'Martie (înainte de pornirea mugurilor)',
-    taiereVar: 'Nu e necesară',
-    recolta:   'Octombrie – noiembrie',
-    tip:       'Altele',
-    obs:       'Ne-astringent, se mănâncă ferm. Rezistent până la -15°C. Tăiere minimă — doar corectivă.' },
-
-  { r:0, c:8,  key:'piersic', pom:'Piersic', soi:'Amalia (1)',            emoji:'🍑', color:'var(--piersic)',
-    taierePrim:'1 mar – 20 mar — tăiere puternică obligatorie',
-    taiereVar: 'Iulie — tăiere verde',
-    recolta:   'August',
-    tip:       'Sâmburoase',
-    obs:       'Rodește exclusiv pe lemnul de 1 an. Fără tăiere anuală producția dispare rapid.' },
-
-  { r:0, c:9,  key:'cais',    pom:'Cais',    soi:'Umberto',               emoji:'🟡', color:'var(--cais)',
-    taierePrim:'Martie – 10 apr (după pornirea mugurilor)',
-    taiereVar: 'August, după recoltă (opțional)',
-    recolta:   'Iulie',
-    tip:       'Sâmburoase',
-    obs:       'Sensibil la monilioză. Nu tăia toamna — riscul de infecție e mare la rănile din repaus.' },
-
-  { r:0, c:10, key:'mar',     pom:'Măr',     soi:'Golden Rainers',         emoji:'🍎', color:'var(--mar)',
-    taierePrim:'20 feb – 10 mar',
-    taiereVar: 'Iulie (opțional)',
-    recolta:   'Septembrie – octombrie',
-    tip:       'Sămânțoase',
-    obs:       'Sensibil la rapăn — tratamente preventive primăvara. Fruct galben auriu la maturitate.' },
-
-  { r:0, c:11, key:'prun',    pom:'Prun',    soi:'Român',                  emoji:'🟣', color:'var(--prun)',
-    taierePrim:'25 feb – 15 mar',
-    taiereVar: 'Nu e necesară de regulă',
-    recolta:   'August – septembrie',
-    tip:       'Sâmburoase',
-    obs:       'Autofertil. Atent la cocoșarul prunului. Excelent pentru țuică și dulceață.' },
-
-  { r:0, c:12, key:'prun',    pom:'Prun',    soi:'Fortune',                emoji:'🟣', color:'var(--prun)',
-    taierePrim:'25 feb – 15 mar',
-    taiereVar: 'Nu e necesară de regulă',
-    recolta:   'Iulie – august',
-    tip:       'Sâmburoase',
-    obs:       'Prun galben american, fructe mari. Poate necesita polenizator (Stanley, Tuleu gras).' },
-
-  // row 1
-  { r:1, c:8,  key:'par',     pom:'Păr',     soi:'Bella di Giugno',        emoji:'🍐', color:'var(--par)',
-    taierePrim:'20 feb – 5 mar',
-    taiereVar: 'Nu e necesară',
-    recolta:   'Iunie – iulie (extratimpuriu)',
-    tip:       'Sămânțoase',
-    obs:       'Primul păr care rodește în an. Fructe mici-medii, galbene. Nu se păstrează — consum imediat.' },
-
-  { r:1, c:9,  key:'piersic', pom:'Piersic', soi:'Amalia (2)',              emoji:'🍑', color:'var(--piersic)',
-    taierePrim:'1 mar – 20 mar — tăiere puternică obligatorie',
-    taiereVar: 'Iulie — tăiere verde',
-    recolta:   'August',
-    tip:       'Sâmburoase',
-    obs:       'Rodește exclusiv pe lemnul de 1 an. Fără tăiere anuală producția dispare rapid.' },
-
-  { r:1, c:10, key:'visin',   pom:'Vișin',   soi:'Morella Neagra',         emoji:'🍒', color:'var(--visin)',
-    taierePrim:'Martie (ușor, de formare) — mai bine vara',
-    taiereVar: 'Iulie-august după recoltă (tăierea principală)',
-    recolta:   'Iulie',
-    tip:       'Sâmburoase',
-    obs:       'Parțial autofertil. Fructe negre, acidulate. Mai tolerant la tăiere decât cireșul.' },
-
-  { r:1, c:11, key:'rodiu',   pom:'Rodiu',   soi:'Ako (1)',                 emoji:'🔴', color:'var(--rodiu)',
-    taierePrim:'Martie – 10 apr (după trecerea gerului)',
-    taiereVar: 'Îndepărtare drajoni de la bază',
-    recolta:   'Septembrie – octombrie',
-    tip:       'Altele',
-    obs:       'Sensibil la ger sub -8°C. Învelire în ierni grele. Produce din anul 2-3.' },
-
-  { r:1, c:12, key:'par',     pom:'Păr',     soi:'Latina',                 emoji:'🍐', color:'var(--par)',
-    taierePrim:'20 feb – 5 mar',
-    taiereVar: 'Nu e necesară',
-    recolta:   'Septembrie – octombrie',
-    tip:       'Sămânțoase',
-    obs:       'Soi italian tardiv, fruct mare. Rezistență bună la boli. Bun polenizator pentru alți peri.' },
-
-  // row 2
-  { r:2, c:0,  key:'mar',     pom:'Măr',     soi:'Ariane (1)',              emoji:'🍎', color:'var(--mar)',
-    taierePrim:'20 feb – 10 mar',
-    taiereVar: 'Iulie — ciupire lăstari viguroși (opțional)',
-    recolta:   'Septembrie – octombrie',
-    tip:       'Sămânțoase',
-    obs:       'Rezistent la rapăn și făinare. Fruct bicolor roșu-galben. Excelent pentru livezi bio.' },
-
-  { r:2, c:9,  key:'rodiu',   pom:'Rodiu',   soi:'Ako (2)',                 emoji:'🔴', color:'var(--rodiu)',
-    taierePrim:'Martie – 10 apr (după trecerea gerului)',
-    taiereVar: 'Îndepărtare drajoni de la bază',
-    recolta:   'Septembrie – octombrie',
-    tip:       'Altele',
-    obs:       'Sensibil la ger sub -8°C. Învelire în ierni grele. Produce din anul 2-3.' },
-
-  { r:2, c:10, key:'nectarin',pom:'Nectarin',soi:'Tina',                   emoji:'🍑', color:'var(--nectarin)',
-    taierePrim:'1 mar – 20 mar — tăiere puternică obligatorie',
-    taiereVar: 'Iulie — tăiere verde',
-    recolta:   'Iulie – august',
-    tip:       'Sâmburoase',
-    obs:       'Piersic fără puf. Același regim de tăiere și tratamente ca piersicul. Fructe roșii, dulci.' },
-
-  { r:2, c:11, key:'cais',    pom:'Cais',    soi:'Mare Timpuriu',           emoji:'🟡', color:'var(--cais)',
-    taierePrim:'Martie – 10 apr',
-    taiereVar: 'Iulie, după recoltă (opțional)',
-    recolta:   'Mai – iunie (extratimpuriu)',
-    tip:       'Sâmburoase',
-    obs:       'Florile sunt timpurii — risc de brumă târzie. Fructe mari, galbene-portocalii.' },
-
-  { r:2, c:12, key:'mar',     pom:'Măr',     soi:'Baya Marisa',            emoji:'🍎', color:'var(--mar)',
-    taierePrim:'20 feb – 10 mar',
-    taiereVar: 'Iulie (opțional)',
-    recolta:   'August (vară)',
-    tip:       'Sămânțoase',
-    obs:       'Măr de vară, bicolor roșu intens. Se recoltează devreme — nu se păstrează mult.' },
-
-  // row 3
-  { r:3, c:0,  key:'par',     pom:'Păr',     soi:'Contesa de Paris',       emoji:'🍐', color:'var(--par)',
-    taierePrim:'20 feb – 5 mar',
-    taiereVar: 'Nu e necesară',
-    recolta:   'Septembrie – octombrie',
-    tip:       'Sămânțoase',
-    obs:       'Soi clasic, fructe mari. Sensibil la focul bacterian (Erwinia) — supraveghează florile primăvara.' },
-
-  { r:3, c:9,  key:'kaki',    pom:'Kaki',    soi:'Fuyu (2)',                emoji:'🟠', color:'var(--kaki)',
-    taierePrim:'Martie (înainte de pornirea mugurilor)',
-    taiereVar: 'Nu e necesară',
-    recolta:   'Octombrie – noiembrie',
-    tip:       'Altele',
-    obs:       'Ne-astringent, se mănâncă ferm. Rezistent până la -15°C. Tăiere minimă — doar corectivă.' },
-
-  { r:3, c:10, key:'gutui',   pom:'Gutui',   soi:'Beretzki',               emoji:'💛', color:'var(--gutui)',
-    taierePrim:'20 feb – 5 mar',
-    taiereVar: 'Nu e necesară',
-    recolta:   'Octombrie',
-    tip:       'Sămânțoase',
-    obs:       'Autofertil. Sensibil la focul bacterian. Recoltează înainte de primul ger.' },
-
-  { r:3, c:11, key:'par',     pom:'Păr',     soi:'Williams Roșu',          emoji:'🍐', color:'var(--par)',
-    taierePrim:'20 feb – 5 mar',
-    taiereVar: 'Nu e necesară',
-    recolta:   'August',
-    tip:       'Sămânțoase',
-    obs:       'Variantă roșie a Williams-ului clasic. Aromă intensă, excelent pentru dulcețuri.' },
-
-  { r:3, c:12, key:'piersic', pom:'Piersic', soi:'Gladis',                 emoji:'🍑', color:'var(--piersic)',
-    taierePrim:'1 mar – 20 mar — tăiere puternică obligatorie',
-    taiereVar: 'Iulie — tăiere verde',
-    recolta:   'August',
-    tip:       'Sâmburoase',
-    obs:       'Același regim ca Amalia. Tratament zeamă bordeleza toamna și primăvara timpuriu.' },
-
-  // row 4
-  { r:4, c:0,  key:'mar',     pom:'Măr',     soi:'Ariane (2)',              emoji:'🍎', color:'var(--mar)',
-    taierePrim:'20 feb – 10 mar',
-    taiereVar: 'Iulie — ciupire lăstari viguroși (opțional)',
-    recolta:   'Septembrie – octombrie',
-    tip:       'Sămânțoase',
-    obs:       'Rezistent la rapăn și făinare. Fruct bicolor roșu-galben. Excelent pentru livezi bio.' },
-
-  { r:4, c:10, key:'cires',   pom:'Cireș',   soi:'Regina',                 emoji:'🍒', color:'var(--cires)',
+// ── TREE DATA ───────────────────────────────────────────────────────────────
+// Each tree ID used in the MAP matrix maps to its details here.
+const TREE_DATA = {
+  mr1: { key:'mar',     pom:'Măr',     soi:'Ariane (1)',       emoji:'🍎', color:'var(--mar)',
+    taierePrim:'20 feb – 10 mar', taiereVar:'Iulie — ciupire lăstari viguroși (opțional)',
+    recolta:'Septembrie – octombrie', tip:'Sămânțoase',
+    obs:'Rezistent la rapăn și făinare. Fruct bicolor roșu-galben. Excelent pentru livezi bio.' },
+  mr2: { key:'mar',     pom:'Măr',     soi:'Golden Rainers',   emoji:'🍎', color:'var(--mar)',
+    taierePrim:'20 feb – 10 mar', taiereVar:'Iulie (opțional)',
+    recolta:'Septembrie – octombrie', tip:'Sămânțoase',
+    obs:'Sensibil la rapăn — tratamente preventive primăvara. Fruct galben auriu la maturitate.' },
+  mr3: { key:'mar',     pom:'Măr',     soi:'Baya Marisa',      emoji:'🍎', color:'var(--mar)',
+    taierePrim:'20 feb – 10 mar', taiereVar:'Iulie (opțional)',
+    recolta:'August (vară)', tip:'Sămânțoase',
+    obs:'Măr de vară, bicolor roșu intens. Se recoltează devreme — nu se păstrează mult.' },
+  mr4: { key:'mar',     pom:'Măr',     soi:'Ariane (2)',       emoji:'🍎', color:'var(--mar)',
+    taierePrim:'20 feb – 10 mar', taiereVar:'Iulie — ciupire lăstari viguroși (opțional)',
+    recolta:'Septembrie – octombrie', tip:'Sămânțoase',
+    obs:'Rezistent la rapăn și făinare. Fruct bicolor roșu-galben. Excelent pentru livezi bio.' },
+  pa1: { key:'par',     pom:'Păr',     soi:'Contesa de Paris', emoji:'🍐', color:'var(--par)',
+    taierePrim:'20 feb – 5 mar', taiereVar:'Nu e necesară',
+    recolta:'Septembrie – octombrie', tip:'Sămânțoase',
+    obs:'Soi clasic, fructe mari. Sensibil la focul bacterian (Erwinia) — supraveghează florile primăvara.' },
+  pa2: { key:'par',     pom:'Păr',     soi:'Bella di Giugno',  emoji:'🍐', color:'var(--par)',
+    taierePrim:'20 feb – 5 mar', taiereVar:'Nu e necesară',
+    recolta:'Iunie – iulie (extratimpuriu)', tip:'Sămânțoase',
+    obs:'Primul păr care rodește în an. Fructe mici-medii, galbene. Nu se păstrează — consum imediat.' },
+  pa3: { key:'par',     pom:'Păr',     soi:'Williams Roșu',    emoji:'🍐', color:'var(--par)',
+    taierePrim:'20 feb – 5 mar', taiereVar:'Nu e necesară',
+    recolta:'August', tip:'Sămânțoase',
+    obs:'Variantă roșie a Williams-ului clasic. Aromă intensă, excelent pentru dulcețuri.' },
+  pa4: { key:'par',     pom:'Păr',     soi:'Latina',           emoji:'🍐', color:'var(--par)',
+    taierePrim:'20 feb – 5 mar', taiereVar:'Nu e necesară',
+    recolta:'Septembrie – octombrie', tip:'Sămânțoase',
+    obs:'Soi italian tardiv, fruct mare. Rezistență bună la boli. Bun polenizator pentru alți peri.' },
+  ci1: { key:'cires',   pom:'Cireș',   soi:'Regina',           emoji:'🍒', color:'var(--cires)',
     taierePrim:'NU se taie iarna! Tăiere ușoară după înflorire (apr-mai)',
-    taiereVar: 'OBLIGATORIU după recoltă — iulie, max 3 săpt.',
-    recolta:   'Iulie (tardiv)',
-    tip:       'Sâmburoase',
-    obs:       'Soi tardiv, fructe mari negre-roșii. Productivitate mare. Polenizatori: Kordia, Lambada.' },
-
-  { r:4, c:11, key:'cires',   pom:'Cireș',   soi:'Early Lory',             emoji:'🍒', color:'var(--cires)',
+    taiereVar:'OBLIGATORIU după recoltă — iulie, max 3 săpt.',
+    recolta:'Iulie (tardiv)', tip:'Sâmburoase',
+    obs:'Soi tardiv, fructe mari negre-roșii. Productivitate mare. Polenizatori: Kordia, Lambada.' },
+  ci2: { key:'cires',   pom:'Cireș',   soi:'Early Lory',       emoji:'🍒', color:'var(--cires)',
     taierePrim:'NU se taie iarna! Tăiere ușoară după înflorire (apr)',
-    taiereVar: 'OBLIGATORIU după recoltă — mai, imediat după cules',
-    recolta:   'Mai (extratimpuriu)',
-    tip:       'Sâmburoase',
-    obs:       'Printre primele cireșuri din an. Necesită polenizator (Burlat, Early Van Compact).' },
-
-  { r:4, c:12, key:'gutui',   pom:'Gutui',   soi:'De Portugalia',          emoji:'💛', color:'var(--gutui)',
-    taierePrim:'20 feb – 5 mar',
-    taiereVar: 'Nu e necesară',
-    recolta:   'Septembrie – octombrie',
-    tip:       'Sămânțoase',
-    obs:       'Fructe mari, parfumate. Bun polenizator pentru Beretzki. Excelent pentru gem și lichior.' },
-
-  // row 6
-  { r:6, c:0,  key:'cires',   pom:'Cireș',   soi:'Hibrid Amar (1)',         emoji:'🍒', color:'var(--cires)',
+    taiereVar:'OBLIGATORIU după recoltă — mai, imediat după cules',
+    recolta:'Mai (extratimpuriu)', tip:'Sâmburoase',
+    obs:'Printre primele cireșuri din an. Necesită polenizator (Burlat, Early Van Compact).' },
+  ci3: { key:'cires',   pom:'Cireș',   soi:'Hibrid Amar (1)',  emoji:'🍒', color:'var(--cires)',
     taierePrim:'NU se taie iarna! Tăiere ușoară după înflorire (apr)',
-    taiereVar: 'OBLIGATORIU după recoltă — mai-iunie, max 3 săpt.',
-    recolta:   'Mai – iunie',
-    tip:       'Sâmburoase',
-    obs:       'Tăierea în repaus favorizează cancerul bacterian. Tăierea de vară e intervenția principală.' },
-
-  // row 7
-  { r:7, c:0,  key:'cires',   pom:'Cireș',   soi:'Hibrid Amar (2)',         emoji:'🍒', color:'var(--cires)',
+    taiereVar:'OBLIGATORIU după recoltă — mai-iunie, max 3 săpt.',
+    recolta:'Mai – iunie', tip:'Sâmburoase',
+    obs:'Tăierea în repaus favorizează cancerul bacterian. Tăierea de vară e intervenția principală.' },
+  ci4: { key:'cires',   pom:'Cireș',   soi:'Hibrid Amar (2)',  emoji:'🍒', color:'var(--cires)',
     taierePrim:'NU se taie iarna! Tăiere ușoară după înflorire (apr)',
-    taiereVar: 'OBLIGATORIU după recoltă — mai-iunie, max 3 săpt.',
-    recolta:   'Mai – iunie',
-    tip:       'Sâmburoase',
-    obs:       'Tăierea în repaus favorizează cancerul bacterian. Tăierea de vară e intervenția principală.' },
-];
+    taiereVar:'OBLIGATORIU după recoltă — mai-iunie, max 3 săpt.',
+    recolta:'Mai – iunie', tip:'Sâmburoase',
+    obs:'Tăierea în repaus favorizează cancerul bacterian. Tăierea de vară e intervenția principală.' },
+  vi1: { key:'visin',   pom:'Vișin',   soi:'Morella Neagra',   emoji:'🍒', color:'var(--visin)',
+    taierePrim:'Martie (ușor, de formare) — mai bine vara',
+    taiereVar:'Iulie-august după recoltă (tăierea principală)',
+    recolta:'Iulie', tip:'Sâmburoase',
+    obs:'Parțial autofertil. Fructe negre, acidulate. Mai tolerant la tăiere decât cireșul.' },
+  ca1: { key:'cais',    pom:'Cais',    soi:'Umberto',          emoji:'🟡', color:'var(--cais)',
+    taierePrim:'Martie – 10 apr (după pornirea mugurilor)',
+    taiereVar:'August, după recoltă (opțional)',
+    recolta:'Iulie', tip:'Sâmburoase',
+    obs:'Sensibil la monilioză. Nu tăia toamna — riscul de infecție e mare la rănile din repaus.' },
+  ca2: { key:'cais',    pom:'Cais',    soi:'Mare Timpuriu',    emoji:'🟡', color:'var(--cais)',
+    taierePrim:'Martie – 10 apr', taiereVar:'Iulie, după recoltă (opțional)',
+    recolta:'Mai – iunie (extratimpuriu)', tip:'Sâmburoase',
+    obs:'Florile sunt timpurii — risc de brumă târzie. Fructe mari, galbene-portocalii.' },
+  pi1: { key:'piersic', pom:'Piersic', soi:'Amalia (1)',       emoji:'🍑', color:'var(--piersic)',
+    taierePrim:'1 mar – 20 mar — tăiere puternică obligatorie',
+    taiereVar:'Iulie — tăiere verde',
+    recolta:'August', tip:'Sâmburoase',
+    obs:'Rodește exclusiv pe lemnul de 1 an. Fără tăiere anuală producția dispare rapid.' },
+  pi2: { key:'piersic', pom:'Piersic', soi:'Amalia (2)',       emoji:'🍑', color:'var(--piersic)',
+    taierePrim:'1 mar – 20 mar — tăiere puternică obligatorie',
+    taiereVar:'Iulie — tăiere verde',
+    recolta:'August', tip:'Sâmburoase',
+    obs:'Rodește exclusiv pe lemnul de 1 an. Fără tăiere anuală producția dispare rapid.' },
+  pi3: { key:'piersic', pom:'Piersic', soi:'Gladis',           emoji:'🍑', color:'var(--piersic)',
+    taierePrim:'1 mar – 20 mar — tăiere puternică obligatorie',
+    taiereVar:'Iulie — tăiere verde',
+    recolta:'August', tip:'Sâmburoase',
+    obs:'Același regim ca Amalia. Tratament zeamă bordeleza toamna și primăvara timpuriu.' },
+  ne1: { key:'nectarin',pom:'Nectarin',soi:'Tina',             emoji:'🍑', color:'var(--nectarin)',
+    taierePrim:'1 mar – 20 mar — tăiere puternică obligatorie',
+    taiereVar:'Iulie — tăiere verde',
+    recolta:'Iulie – august', tip:'Sâmburoase',
+    obs:'Piersic fără puf. Același regim de tăiere și tratamente ca piersicul. Fructe roșii, dulci.' },
+  pr1: { key:'prun',    pom:'Prun',    soi:'Român',            emoji:'🟣', color:'var(--prun)',
+    taierePrim:'25 feb – 15 mar', taiereVar:'Nu e necesară de regulă',
+    recolta:'August – septembrie', tip:'Sâmburoase',
+    obs:'Autofertil. Atent la cocoșarul prunului. Excelent pentru țuică și dulceață.' },
+  pr2: { key:'prun',    pom:'Prun',    soi:'Fortune',          emoji:'🟣', color:'var(--prun)',
+    taierePrim:'25 feb – 15 mar', taiereVar:'Nu e necesară de regulă',
+    recolta:'Iulie – august', tip:'Sâmburoase',
+    obs:'Prun galben american, fructe mari. Poate necesita polenizator (Stanley, Tuleu gras).' },
+  gu1: { key:'gutui',   pom:'Gutui',   soi:'Beretzki',         emoji:'💛', color:'var(--gutui)',
+    taierePrim:'20 feb – 5 mar', taiereVar:'Nu e necesară',
+    recolta:'Octombrie', tip:'Sămânțoase',
+    obs:'Autofertil. Sensibil la focul bacterian. Recoltează înainte de primul ger.' },
+  gu2: { key:'gutui',   pom:'Gutui',   soi:'De Portugalia',    emoji:'💛', color:'var(--gutui)',
+    taierePrim:'20 feb – 5 mar', taiereVar:'Nu e necesară',
+    recolta:'Septembrie – octombrie', tip:'Sămânțoase',
+    obs:'Fructe mari, parfumate. Bun polenizator pentru Beretzki. Excelent pentru gem și lichior.' },
+  kk1: { key:'kaki',    pom:'Kaki',    soi:'Fuyu',             emoji:'🟠', color:'var(--kaki)',
+    taierePrim:'Martie (înainte de pornirea mugurilor)', taiereVar:'Nu e necesară',
+    recolta:'Octombrie – noiembrie', tip:'Altele',
+    obs:'Ne-astringent, se mănâncă ferm. Rezistent până la -15°C. Tăiere minimă — doar corectivă.' },
+  kk2: { key:'kaki',    pom:'Kaki',    soi:'Fuyu (2)',          emoji:'🟠', color:'var(--kaki)',
+    taierePrim:'Martie (înainte de pornirea mugurilor)', taiereVar:'Nu e necesară',
+    recolta:'Octombrie – noiembrie', tip:'Altele',
+    obs:'Ne-astringent, se mănâncă ferm. Rezistent până la -15°C. Tăiere minimă — doar corectivă.' },
+  rd1: { key:'rodiu',   pom:'Rodiu',   soi:'Ako (1)',           emoji:'🔴', color:'var(--rodiu)',
+    taierePrim:'Martie – 10 apr (după trecerea gerului)',
+    taiereVar:'Îndepărtare drajoni de la bază',
+    recolta:'Septembrie – octombrie', tip:'Altele',
+    obs:'Sensibil la ger sub -8°C. Învelire în ierni grele. Produce din anul 2-3.' },
+  rd2: { key:'rodiu',   pom:'Rodiu',   soi:'Ako (2)',           emoji:'🔴', color:'var(--rodiu)',
+    taierePrim:'Martie – 10 apr (după trecerea gerului)',
+    taiereVar:'Îndepărtare drajoni de la bază',
+    recolta:'Septembrie – octombrie', tip:'Altele',
+    obs:'Sensibil la ger sub -8°C. Învelire în ierni grele. Produce din anul 2-3.' },
+};
 
 // Season context (March = tăiere primăvară)
 const SEASON = {
@@ -775,115 +695,89 @@ const SEASON = {
   summer_only: ['cires','visin']
 };
 
-// ── BUILD GRID ──────────────────────────────────────────────────────────────
-const ROWS = 8, COLS = 13;
+// ── MAP MATRIX ──────────────────────────────────────────────────────────────
+// Edit this grid to change the layout!
+//   .   = grass        H = house (merged)    G = gate
+//   A   = annex (merged)   xx = tree ID (from TREE_DATA above)
+//
+//            A      B      C    D    E    F    G      H      I      J      K      L      M
+const MAP = [
+  /* 1 */ [ '.',   '.',   'H', 'H', 'H', 'H', 'H',  'kk1',   'pi1', 'ca1', 'mr2', 'pr1', 'pr2'],
+  /* 2 */ [ '.',   '.',   'H', 'H', 'H', 'H', 'H',  '.',   'pa2', 'pi2', 'vi1', 'rd1', 'pa4'],
+  /* 3 */ [ 'mr1', '.',   'H', 'H', 'H', 'H', 'H',  '.',   '.',   'rd2', 'ne1', 'ca2', 'mr3'],
+  /* 4 */ [ 'pa1', '.',   'H', 'H', 'H', 'H', 'H',  '.',   '.',   'kk2', 'gu1', 'pa3', 'pi3'],
+  /* 5 */ [ 'mr4', '.',   '.',  '.', '.', '.', '.',   '.', '.',   '.',   'ci1', 'ci2', 'gu2'],
+  /* 6 */ [ 'G',   '.',   '.',  '.', '.', '.', '.',   '.',   '.',   '.',   '.',   '.',   '.' ],
+  /* 7 */ [ 'ci3', '.',   '.',  '.', '.', '.', '.',   '.',   '.',   '.',   'A',   'A',   '.' ],
+  /* 8 */ [ 'ci4', '.',   '.',  '.', '.', '.', '.',   '.',   '.',   '.',   'A',   'A',   '.' ],
+];
 
-// Map of special cells
-const SPECIAL = {};
-// House: spans rows 0-3, cols 1-6
-for (let r = 0; r <= 3; r++) for (let c = 1; c <= 6; c++) SPECIAL[`${r}_${c}`] = 'house';
-// Gate at row 5 col 0
-SPECIAL['5_0'] = 'gate';
-// Annex at rows 5-7 cols 8-9
-for (let r = 5; r <= 7; r++) for (let c = 8; c <= 9; c++) SPECIAL[`${r}_${c}`] = 'annex';
-// Path row 5 cols 1-7
-for (let c = 1; c <= 7; c++) SPECIAL[`5_${c}`] = 'path';
-
-// Tree lookup
-const TREE_AT = {};
-TREES.forEach(t => { TREE_AT[`${t.r}_${t.c}`] = t; });
-
+// ── BUILD GRID (matrix-driven) ─────────────────────────────────────────────
 function buildGrid() {
   const grid = document.getElementById('mapGrid');
   grid.innerHTML = '';
+  const rows = MAP.length, cols = MAP[0].length;
 
-  // House spanning cell (special multi-cell)
-  const houseDiv = document.createElement('div');
-  houseDiv.style.gridColumn = '2 / 7';
-  houseDiv.style.gridRow = '1 / 5';
-  houseDiv.style.background = 'var(--bg3)';
-  houseDiv.style.border = '2px solid var(--border2)';
-  houseDiv.style.borderRadius = '10px';
-  houseDiv.style.display = 'flex';
-  houseDiv.style.flexDirection = 'column';
-  houseDiv.style.alignItems = 'center';
-  houseDiv.style.justifyContent = 'center';
-  houseDiv.style.gap = '4px';
-  houseDiv.style.gridRowStart = '1';
-  houseDiv.style.gridRowEnd = '5';
-  houseDiv.style.gridColumnStart = '2';
-  houseDiv.style.gridColumnEnd = '7';
-  houseDiv.innerHTML = `<div style="font-size:40px;opacity:0.5">🏠</div>
-    <div style="font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--ink2)">Casă</div>
-    <div style="font-size:11px;color:var(--ink3)">150 m²</div>`;
-  grid.appendChild(houseDiv);
+  // Find bounding box for a character (H, A, etc.)
+  function bounds(ch) {
+    let r0=Infinity, r1=-1, c0=Infinity, c1=-1;
+    for (let r=0; r<rows; r++) for (let c=0; c<cols; c++) {
+      if (MAP[r][c]===ch) { r0=Math.min(r0,r); r1=Math.max(r1,r); c0=Math.min(c0,c); c1=Math.max(c1,c); }
+    }
+    return r1>=0 ? {r0,r1,c0,c1} : null;
+  }
 
-  for (let r = 0; r < ROWS; r++) {
-    for (let c = 0; c < COLS; c++) {
-      const key = `${r}_${c}`;
-      // Skip cells covered by house span
-      if (r >= 0 && r <= 3 && c >= 1 && c <= 6) continue;
+  // House block
+  const hb = bounds('H');
+  if (hb) {
+    const d = document.createElement('div');
+    d.style.cssText = `grid-column:${hb.c0+1}/${hb.c1+2}; grid-row:${hb.r0+1}/${hb.r1+2};
+      background:var(--bg3); border:2px solid var(--border2); border-radius:10px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;`;
+    d.innerHTML = `<div style="font-size:40px;opacity:0.5">🏠</div>
+      <div style="font-family:'Lora',serif;font-size:16px;font-weight:600;color:var(--ink2)">Casă</div>`;
+    grid.appendChild(d);
+  }
 
-      const tree = TREE_AT[key];
-      const special = SPECIAL[key];
+  // Annex block
+  const ab = bounds('A');
+  if (ab) {
+    const d = document.createElement('div');
+    d.style.cssText = `grid-column:${ab.c0+1}/${ab.c1+2}; grid-row:${ab.r0+1}/${ab.r1+2};
+      background:var(--bg3); border:1.5px solid var(--border2); border-radius:8px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;`;
+    d.innerHTML = `<div style="font-size:24px;opacity:0.5">🏚️</div>
+      <div style="font-size:11px;font-weight:500;color:var(--ink2)">Anexă</div>`;
+    grid.appendChild(d);
+  }
 
+  // Individual cells
+  for (let r=0; r<rows; r++) {
+    for (let c=0; c<cols; c++) {
+      const val = MAP[r][c];
+      if (val === 'H' || val === 'A') continue; // covered by spanning blocks
+
+      const tree = TREE_DATA[val]; // lookup tree by ID from matrix
       const cell = document.createElement('div');
-      cell.dataset.row = r;
-      cell.dataset.col = c;
+      cell.style.gridColumn = c + 1;
+      cell.style.gridRow = r + 1;
 
       if (tree) {
         cell.className = 'cell tree';
         cell.dataset.key = tree.key;
-        cell.dataset.id = key;
+        cell.dataset.id = `${r}_${c}`;
         cell.innerHTML = `
           <div class="tree-circle" style="background:${tree.color}">
             <span>${tree.emoji}</span>
           </div>
           <div class="tree-name">${tree.pom}<br><em style="font-style:normal;opacity:0.8">${tree.soi.replace(' (1)','').replace(' (2)','')}</em></div>`;
-        cell.style.gridColumn = c + 1;
-        cell.style.gridRow = r + 1;
         cell.addEventListener('click', () => selectTree(tree, cell));
-
-      } else if (key === '5_0') {
-        // Gate
+      } else if (val === 'G') {
         cell.className = 'cell gate-cell';
-        cell.style.gridColumn = c + 1;
-        cell.style.gridRow = r + 1;
-        cell.innerHTML = `<div style="text-align:center;font-size:20px">🚪</div><div class="building-label" style="position:static;font-size:10px;color:var(--ink3)">Intrare</div>`;
-
-      } else if (special === 'annex') {
-        if (r === 5 && c === 8) {
-          // Span the annex
-          const annexDiv = document.createElement('div');
-          annexDiv.style.gridColumn = '9 / 11';
-          annexDiv.style.gridRow = '6 / 9';
-          annexDiv.style.background = 'var(--bg3)';
-          annexDiv.style.border = '1.5px solid var(--border2)';
-          annexDiv.style.borderRadius = '8px';
-          annexDiv.style.display = 'flex';
-          annexDiv.style.flexDirection = 'column';
-          annexDiv.style.alignItems = 'center';
-          annexDiv.style.justifyContent = 'center';
-          annexDiv.style.gap = '3px';
-          annexDiv.innerHTML = `<div style="font-size:24px;opacity:0.5">🏚️</div>
-            <div style="font-size:11px;font-weight:500;color:var(--ink2)">Anexă</div>`;
-          grid.appendChild(annexDiv);
-        }
-        continue; // skip individual cells for annex area
-
-      } else if (special === 'path') {
-        cell.className = 'cell path';
-        cell.style.gridColumn = c + 1;
-        cell.style.gridRow = r + 1;
-        if (c === 1) cell.style.borderRadius = '0';
-        cell.style.background = 'rgba(200,180,150,0.5)';
-        cell.style.borderRadius = '4px';
-
+        cell.innerHTML = `<div style="text-align:center;font-size:20px">🚪</div>
+          <div class="building-label" style="position:static;font-size:10px;color:var(--ink3)">Intrare</div>`;
       } else {
-        // Grass — alternating pattern
         cell.className = 'cell ' + ((r + c) % 2 === 0 ? 'grass' : 'grass2');
-        cell.style.gridColumn = c + 1;
-        cell.style.gridRow = r + 1;
       }
 
       grid.appendChild(cell);
