@@ -5,46 +5,136 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tabel Tăieri Livadă</title>
 <style>
+:root {
+  --bg:             #ffffff;
+  --bg-secondary:   #f7f7f5;
+  --text:           #1a1a1a;
+  --text-secondary: #666666;
+  --text-warn:      #993c1d;
+  --border:         rgba(0,0,0,0.11);
+  --border-md:      rgba(0,0,0,0.22);
+  --radius-lg:      12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:             #1e1e1c;
+    --bg-secondary:   #2a2a28;
+    --text:           #f0ede8;
+    --text-secondary: #a0a09a;
+    --text-warn:      #f09595;
+    --border:         rgba(255,255,255,0.11);
+    --border-md:      rgba(255,255,255,0.22);
+  }
+}
+
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:sans-serif;font-size:13px;color:#1a1a1a;background:#fff;padding:1.5rem}
-h1{font-size:18px;font-weight:500;margin-bottom:16px;color:#1a1a1a}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:13px;
+  color:var(--text);
+  background:var(--bg);
+  padding:1.5rem;
+  line-height:1.5;
+}
+
+h1{font-size:18px;font-weight:500;margin-bottom:16px;color:var(--text)}
+
 .filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.fbtn{padding:4px 12px;border-radius:20px;border:1px solid #ccc;background:transparent;cursor:pointer;font-size:12px;color:#555;transition:all 0.15s}
-.fbtn:hover{background:#f5f5f5}
-.fbtn.active{border-color:#555;color:#1a1a1a;font-weight:500;background:#f0f0f0}
-.tbl-wrap{overflow-x:auto;border:1px solid #e5e5e5;border-radius:10px}
-table{width:100%;border-collapse:collapse;min-width:800px}
-thead tr{background:#f8f8f8}
-th{padding:9px 12px;text-align:left;font-weight:500;font-size:12px;color:#666;border-bottom:1px solid #e5e5e5;white-space:nowrap}
-td{padding:8px 12px;border-bottom:1px solid #e5e5e5;vertical-align:top;line-height:1.5}
+.fbtn{
+  padding:4px 12px;
+  border-radius:20px;
+  border:0.5px solid var(--border-md);
+  background:transparent;
+  cursor:pointer;
+  font-size:12px;
+  color:var(--text-secondary);
+  transition:all 0.15s;
+}
+.fbtn:hover{background:var(--bg-secondary)}
+.fbtn.active{
+  border-color:var(--border-md);
+  color:var(--text);
+  font-weight:500;
+  background:var(--bg-secondary);
+}
+
+.tbl-wrap{overflow-x:auto;border:0.5px solid var(--border);border-radius:var(--radius-lg)}
+table{width:100%;border-collapse:collapse;min-width:820px}
+thead tr{background:var(--bg-secondary)}
+th{
+  padding:9px 12px;
+  text-align:left;
+  font-weight:500;
+  font-size:12px;
+  color:var(--text-secondary);
+  border-bottom:0.5px solid var(--border);
+  white-space:nowrap;
+}
+td{
+  padding:8px 12px;
+  border-bottom:0.5px solid var(--border);
+  vertical-align:top;
+  line-height:1.5;
+  color:var(--text);
+}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:#fafafa}
+tr:hover td{background:var(--bg-secondary)}
+
 .badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;white-space:nowrap}
-.b-mar{background:#EAF3DE;color:#27500A}
-.b-par{background:#E6F1FB;color:#0C447C}
-.b-cires{background:#FAEEDA;color:#633806}
-.b-visin{background:#FAECE7;color:#712B13}
-.b-cais{background:#FBEAF0;color:#72243E}
-.b-piersic{background:#FAECE7;color:#712B13}
-.b-prun{background:#EEEDFE;color:#3C3489}
-.b-gutui{background:#FAEEDA;color:#633806}
-.b-kaki{background:#FAC775;color:#633806}
-.b-rodiu{background:#F4C0D1;color:#4B1528}
-.pom{font-weight:500;font-size:13px}
-.soi{font-size:11px;color:#888;margin-top:2px}
-.qty{display:inline-block;background:#f0f0f0;border:1px solid #ddd;border-radius:20px;padding:1px 7px;font-size:11px;margin-top:3px;color:#666}
-.warn{font-size:11px;color:#993C1D;font-weight:500}
-.muted{color:#888;font-size:12px}
+.b-mar    {background:#eaf3de;color:#27500a}
+.b-par    {background:#e6f1fb;color:#0c447c}
+.b-cires  {background:#faeeda;color:#633806}
+.b-visin  {background:#faece7;color:#712b13}
+.b-cais   {background:#fbeaf0;color:#72243e}
+.b-piersic{background:#faece7;color:#712b13}
+.b-prun   {background:#eeedfe;color:#3c3489}
+.b-gutui  {background:#faeeda;color:#633806}
+.b-kaki   {background:#fac775;color:#633806}
+.b-rodiu  {background:#f4c0d1;color:#4b1528}
+
+@media (prefers-color-scheme: dark) {
+  .b-mar    {background:#173404;color:#c0dd97}
+  .b-par    {background:#042c53;color:#85b7eb}
+  .b-cires  {background:#412402;color:#fac775}
+  .b-visin  {background:#4a1b0c;color:#f0997b}
+  .b-cais   {background:#4b1528;color:#f4c0d1}
+  .b-piersic{background:#4a1b0c;color:#f0997b}
+  .b-prun   {background:#26215c;color:#afa9ec}
+  .b-gutui  {background:#412402;color:#fac775}
+  .b-kaki   {background:#633806;color:#fac775}
+  .b-rodiu  {background:#4b1528;color:#f4c0d1}
+}
+
+.pom{font-weight:500;font-size:13px;color:var(--text)}
+.qty{
+  display:inline-block;
+  background:var(--bg-secondary);
+  border:0.5px solid var(--border-md);
+  border-radius:20px;
+  padding:1px 7px;
+  font-size:11px;
+  margin-top:3px;
+  color:var(--text-secondary);
+}
+
+.warn{font-size:11px;color:var(--text-warn);font-weight:500}
+.muted{color:var(--text-secondary);font-size:12px}
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:middle}
-.dot-spring{background:#3B6D11}
-.dot-summer{background:#BA7517}
-.dot-no{background:#B4B2A9}
-.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:#888;margin-top:12px}
+.dot-spring{background:#3b6d11}
+.dot-summer{background:#ba7517}
+.dot-no    {background:#b4b2a9}
+
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--text-secondary);margin-top:12px}
+.legend-warn{color:#993c1d;font-weight:500}
+@media (prefers-color-scheme: dark){.legend-warn{color:#f09595}}
+
 .hidden{display:none}
 </style>
 </head>
 <body>
+
 <h1>Tabel tăieri livadă</h1>
+
 <div class="filters" id="filters">
   <button class="fbtn active" data-cat="all">Toți pomii</button>
   <button class="fbtn" data-cat="mar">Măr</button>
@@ -58,11 +148,12 @@ tr:hover td{background:#fafafa}
   <button class="fbtn" data-cat="kaki">Kaki</button>
   <button class="fbtn" data-cat="rodiu">Rodiu</button>
 </div>
+
 <div class="tbl-wrap">
 <table id="tbl">
 <thead>
 <tr>
-  <th>Pom & soi</th>
+  <th>Pom &amp; soi</th>
   <th>Nr.</th>
   <th>Tăiere primăvară</th>
   <th>Tăiere vară</th>
@@ -71,202 +162,226 @@ tr:hover td{background:#fafafa}
 </tr>
 </thead>
 <tbody>
+
 <tr data-cat="mar">
-  <td><div class="pom"><span class="badge b-mar">Măr</span></div><div class="pom" style="margin-top:4px">Ariane</div></td>
+  <td><span class="badge b-mar">Măr</span><div class="pom" style="margin-top:4px">Ariane</div></td>
   <td><span class="qty">×2</span></td>
   <td><span class="dot dot-spring"></span><strong>20 feb – 10 mar</strong><div class="muted">În repaus vegetativ, înainte de pornire</div></td>
   <td><span class="dot dot-summer"></span>Iulie (opțional)<div class="muted">Ciupire lăstari viguroși pentru aerisire</div></td>
   <td>Septembrie – octombrie</td>
   <td>Rezistent la rapăn și făinare. Fruct bicolor roșu-galben. Excelent pentru livezi bio.</td>
 </tr>
+
 <tr data-cat="mar">
-  <td><div class="pom"><span class="badge b-mar">Măr</span></div><div class="pom" style="margin-top:4px">Golden Rainers</div></td>
+  <td><span class="badge b-mar">Măr</span><div class="pom" style="margin-top:4px">Golden Rainers</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>20 feb – 10 mar</strong></td>
   <td><span class="dot dot-summer"></span>Iulie (opțional)</td>
   <td>Septembrie – octombrie</td>
-  <td>Soiuri Golden sunt sensibile la rapăn – tratamente preventive primăvara. Galben auriu la maturitate.</td>
+  <td>Sensibil la rapăn – tratamente preventive primăvara. Fruct galben auriu la maturitate.</td>
 </tr>
+
 <tr data-cat="mar">
-  <td><div class="pom"><span class="badge b-mar">Măr</span></div><div class="pom" style="margin-top:4px">Baya Marisa</div></td>
+  <td><span class="badge b-mar">Măr</span><div class="pom" style="margin-top:4px">Baya Marisa</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>20 feb – 10 mar</strong></td>
   <td><span class="dot dot-summer"></span>Iulie (opțional)</td>
   <td>August (vară)</td>
   <td>Măr de vară, bicolor roșu intens. Se recoltează devreme – nu se păstrează mult. Rezistent la rapăn.</td>
 </tr>
+
 <tr data-cat="par">
-  <td><div class="pom"><span class="badge b-par">Păr</span></div><div class="pom" style="margin-top:4px">Contesa de Paris</div></td>
+  <td><span class="badge b-par">Păr</span><div class="pom" style="margin-top:4px">Contesa de Paris</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>20 feb – 5 mar</strong></td>
   <td><span class="dot dot-no"></span><span class="muted">Nu e necesară</span></td>
   <td>Septembrie – octombrie</td>
   <td>Soi clasic, fructe mari. Sensibil la focul bacterian (Erwinia) – supraveghează florile primăvara.</td>
 </tr>
+
 <tr data-cat="par">
-  <td><div class="pom"><span class="badge b-par">Păr</span></div><div class="pom" style="margin-top:4px">Bella di Giugno</div></td>
+  <td><span class="badge b-par">Păr</span><div class="pom" style="margin-top:4px">Bella di Giugno</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>20 feb – 5 mar</strong></td>
   <td><span class="dot dot-no"></span><span class="muted">Nu e necesară</span></td>
   <td>Iunie – iulie (extratimpuriu)</td>
   <td>Primul păr care rodește în an. Fructe mici-medii, galbene. Nu se păstrează – consum imediat.</td>
 </tr>
+
 <tr data-cat="par">
-  <td><div class="pom"><span class="badge b-par">Păr</span></div><div class="pom" style="margin-top:4px">Williams Roșu</div></td>
+  <td><span class="badge b-par">Păr</span><div class="pom" style="margin-top:4px">Williams Roșu</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>20 feb – 5 mar</strong></td>
   <td><span class="dot dot-no"></span><span class="muted">Nu e necesară</span></td>
   <td>August</td>
   <td>Variantă roșie a Williams-ului clasic. Aromă intensă, excelent pentru dulcețuri.</td>
 </tr>
+
 <tr data-cat="par">
-  <td><div class="pom"><span class="badge b-par">Păr</span></div><div class="pom" style="margin-top:4px">Latina</div></td>
+  <td><span class="badge b-par">Păr</span><div class="pom" style="margin-top:4px">Latina</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>20 feb – 5 mar</strong></td>
   <td><span class="dot dot-no"></span><span class="muted">Nu e necesară</span></td>
   <td>Septembrie – octombrie</td>
   <td>Soi italian tardiv, fruct mare. Rezistență bună la boli. Bun polenizator pentru alți peri.</td>
 </tr>
+
 <tr data-cat="cires">
-  <td><div class="pom"><span class="badge b-cires">Cireș</span></div><div class="pom" style="margin-top:4px">Hibrid Amar</div></td>
+  <td><span class="badge b-cires">Cireș</span><div class="pom" style="margin-top:4px">Hibrid Amar</div></td>
   <td><span class="qty">×2</span></td>
   <td><span class="warn">⚠ NU se taie iarna/toamna</span><div class="muted" style="margin-top:3px">Tăiere ușoară după înflorire (apr)</div></td>
   <td><span class="dot dot-summer"></span><strong>Obligatoriu după recoltă</strong><div class="muted">Mai–iunie, max 3 săpt. după cules</div></td>
   <td>Mai – iunie</td>
-  <td>Tăierea în repaus favorizează cancerul bacterian. Tăierea vară e principala intervenție.</td>
+  <td>Tăierea în repaus favorizează cancerul bacterian. Tăierea de vară e principala intervenție.</td>
 </tr>
+
 <tr data-cat="cires">
-  <td><div class="pom"><span class="badge b-cires">Cireș</span></div><div class="pom" style="margin-top:4px">Regina</div></td>
+  <td><span class="badge b-cires">Cireș</span><div class="pom" style="margin-top:4px">Regina</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="warn">⚠ NU se taie iarna/toamna</span><div class="muted" style="margin-top:3px">Tăiere ușoară după înflorire (apr-mai)</div></td>
   <td><span class="dot dot-summer"></span><strong>Obligatoriu după recoltă</strong><div class="muted">Iulie, max 3 săpt. după cules</div></td>
   <td>Iulie (tardiv)</td>
-  <td>Soi tardiv, fructe mari negre-roșii. Productivitate mare.</td>
+  <td>Soi tardiv, fructe mari negre-roșii. Productivitate mare. Polenizatori: Kordia, Lambada.</td>
 </tr>
+
 <tr data-cat="cires">
-  <td><div class="pom"><span class="badge b-cires">Cireș</span></div><div class="pom" style="margin-top:4px">Early Lory</div></td>
+  <td><span class="badge b-cires">Cireș</span><div class="pom" style="margin-top:4px">Early Lory</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="warn">⚠ NU se taie iarna/toamna</span><div class="muted" style="margin-top:3px">Tăiere ușoară după înflorire (apr)</div></td>
   <td><span class="dot dot-summer"></span><strong>Obligatoriu după recoltă</strong><div class="muted">Mai, imediat după cules</div></td>
   <td>Mai (extratimpuriu)</td>
-  <td>Unul din primele cireșuri din an. Necesită polenizator (Burlat, Early Van Compact).</td>
+  <td>Printre primele cireșuri din an. Necesită polenizator (Burlat, Early Van Compact).</td>
 </tr>
+
 <tr data-cat="visin">
-  <td><div class="pom"><span class="badge b-visin">Vișin</span></div><div class="pom" style="margin-top:4px">Morella Neagra</div></td>
+  <td><span class="badge b-visin">Vișin</span><div class="pom" style="margin-top:4px">Morella Neagra</div></td>
   <td><span class="qty">×1</span></td>
-  <td><span class="dot dot-spring"></span><strong>Martie (ușor, de formare)</strong></td>
-  <td><span class="dot dot-summer"></span><strong>Iulie-august după recoltă</strong></td>
+  <td><span class="dot dot-spring"></span><strong>Martie (ușor, de formare)</strong><div class="muted">Se poate și complet vara</div></td>
+  <td><span class="dot dot-summer"></span><strong>Iulie-august după recoltă</strong><div class="muted">Tăierea principală la vișin</div></td>
   <td>Iulie</td>
-  <td>Autofertil parțial. Fructe negre, acidulate. Mai tolerant la tăiere decât cireșul.</td>
+  <td>Parțial autofertil. Fructe negre, acidulate. Mai tolerant la tăiere decât cireșul.</td>
 </tr>
+
 <tr data-cat="cais">
-  <td><div class="pom"><span class="badge b-cais">Cais</span></div><div class="pom" style="margin-top:4px">Umberto</div></td>
+  <td><span class="badge b-cais">Cais</span><div class="pom" style="margin-top:4px">Umberto</div></td>
   <td><span class="qty">×1</span></td>
-  <td><span class="dot dot-spring"></span><strong>Martie – 10 apr</strong></td>
+  <td><span class="dot dot-spring"></span><strong>Martie – 10 apr</strong><div class="muted">După ce mugurii pornesc vizibil</div></td>
   <td><span class="dot dot-summer"></span>August, după recoltă (opțional)</td>
   <td>Iulie</td>
-  <td>Sensibil la monilioză – evită rănile pe vreme umedă.</td>
+  <td>Sensibil la monilioză – evită rănile pe vreme umedă. Nu tăia toamna.</td>
 </tr>
+
 <tr data-cat="cais">
-  <td><div class="pom"><span class="badge b-cais">Cais</span></div><div class="pom" style="margin-top:4px">Mare Timpuriu</div></td>
+  <td><span class="badge b-cais">Cais</span><div class="pom" style="margin-top:4px">Mare Timpuriu</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>Martie – 10 apr</strong></td>
   <td><span class="dot dot-summer"></span>Iulie, după recoltă (opțional)</td>
   <td>Mai – iunie (extratimpuriu)</td>
   <td>Florile sunt timpurii – risc de brumă târzie. Fructe mari, galbene-portocalii.</td>
 </tr>
+
 <tr data-cat="piersic">
-  <td><div class="pom"><span class="badge b-piersic">Piersic</span></div><div class="pom" style="margin-top:4px">Amalia</div></td>
+  <td><span class="badge b-piersic">Piersic</span><div class="pom" style="margin-top:4px">Amalia</div></td>
   <td><span class="qty">×2</span></td>
+  <td><span class="dot dot-spring"></span><strong>1 mar – 20 mar</strong><div class="muted">Tăiere puternică anuală obligatorie (2/3 din lăstari noi)</div></td>
+  <td><span class="dot dot-summer"></span>Iulie (tăiere verde – lăstari în exces)</td>
+  <td>August</td>
+  <td>Rodește pe lemnul de 1 an – fără tăiere anuală scade rapid producția. Sensibil la bășicare.</td>
+</tr>
+
+<tr data-cat="piersic">
+  <td><span class="badge b-piersic">Piersic</span><div class="pom" style="margin-top:4px">Gladis</div></td>
+  <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>1 mar – 20 mar</strong><div class="muted">Tăiere puternică anuală obligatorie</div></td>
   <td><span class="dot dot-summer"></span>Iulie (tăiere verde)</td>
   <td>August</td>
-  <td>Rodește pe lemnul de 1 an – fără tăiere anuală scade rapid producția.</td>
+  <td>Același regim ca Amalia. Tratament zeamă bordeleza toamna și primăvara timpuriu.</td>
 </tr>
+
 <tr data-cat="piersic">
-  <td><div class="pom"><span class="badge b-piersic">Piersic</span></div><div class="pom" style="margin-top:4px">Gladis</div></td>
+  <td><span class="badge b-piersic">Nectarin</span><div class="pom" style="margin-top:4px">Tina</div></td>
   <td><span class="qty">×1</span></td>
-  <td><span class="dot dot-spring"></span><strong>1 mar – 20 mar</strong></td>
-  <td><span class="dot dot-summer"></span>Iulie (tăiere verde)</td>
-  <td>August</td>
-  <td>Tratament obligatoriu cu zeamă bordeleza toamna și primăvara timpuriu.</td>
-</tr>
-<tr data-cat="piersic">
-  <td><div class="pom"><span class="badge b-piersic">Nectarin</span></div><div class="pom" style="margin-top:4px">Tina</div></td>
-  <td><span class="qty">×1</span></td>
-  <td><span class="dot dot-spring"></span><strong>1 mar – 20 mar</strong></td>
+  <td><span class="dot dot-spring"></span><strong>1 mar – 20 mar</strong><div class="muted">Tăiere puternică anuală obligatorie</div></td>
   <td><span class="dot dot-summer"></span>Iulie (tăiere verde)</td>
   <td>Iulie – august</td>
-  <td>Piersic fără puf. Același regim de tăiere și tratamente.</td>
+  <td>Piersic fără puf. Același regim de tăiere și tratamente. Fructe roșii, dulci.</td>
 </tr>
+
 <tr data-cat="prun">
-  <td><div class="pom"><span class="badge b-prun">Prun</span></div><div class="pom" style="margin-top:4px">Român</div></td>
+  <td><span class="badge b-prun">Prun</span><div class="pom" style="margin-top:4px">Român</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>25 feb – 15 mar</strong></td>
   <td><span class="dot dot-no"></span><span class="muted">Nu e necesară de regulă</span></td>
   <td>August – septembrie</td>
   <td>Autofertil. Atent la cocoșarul prunului. Excelent pentru țuică și dulceață.</td>
 </tr>
+
 <tr data-cat="prun">
-  <td><div class="pom"><span class="badge b-prun">Prun</span></div><div class="pom" style="margin-top:4px">Fortune</div></td>
+  <td><span class="badge b-prun">Prun</span><div class="pom" style="margin-top:4px">Fortune</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>25 feb – 15 mar</strong></td>
   <td><span class="dot dot-no"></span><span class="muted">Nu e necesară de regulă</span></td>
   <td>Iulie – august</td>
-  <td>Prun galben american, fructe mari, dulci. Poate necesita polenizator.</td>
+  <td>Prun galben american, fructe mari, dulci. Poate necesita polenizator (Stanley, Tuleu gras).</td>
 </tr>
+
 <tr data-cat="gutui">
-  <td><div class="pom"><span class="badge b-gutui">Gutui</span></div><div class="pom" style="margin-top:4px">Beretzki</div></td>
+  <td><span class="badge b-gutui">Gutui</span><div class="pom" style="margin-top:4px">Beretzki</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>20 feb – 5 mar</strong></td>
   <td><span class="dot dot-no"></span><span class="muted">Nu e necesară</span></td>
   <td>Octombrie</td>
   <td>Autofertil. Sensibil la focul bacterian. Recoltează înainte de primul ger.</td>
 </tr>
+
 <tr data-cat="gutui">
-  <td><div class="pom"><span class="badge b-gutui">Gutui</span></div><div class="pom" style="margin-top:4px">De Portugalia</div></td>
+  <td><span class="badge b-gutui">Gutui</span><div class="pom" style="margin-top:4px">De Portugalia</div></td>
   <td><span class="qty">×1</span></td>
   <td><span class="dot dot-spring"></span><strong>20 feb – 5 mar</strong></td>
   <td><span class="dot dot-no"></span><span class="muted">Nu e necesară</span></td>
   <td>Septembrie – octombrie</td>
-  <td>Fructe mari, parfumate. Bun polenizator pentru Beretzki.</td>
+  <td>Fructe mari, parfumate. Bun polenizator pentru Beretzki. Excelent pentru gem și lichior.</td>
 </tr>
+
 <tr data-cat="kaki">
-  <td><div class="pom"><span class="badge b-kaki">Kaki</span></div><div class="pom" style="margin-top:4px">Fuyu</div></td>
+  <td><span class="badge b-kaki">Kaki</span><div class="pom" style="margin-top:4px">Fuyu</div></td>
   <td><span class="qty">×2</span></td>
-  <td><span class="dot dot-spring"></span><strong>Martie</strong></td>
+  <td><span class="dot dot-spring"></span><strong>Martie (înainte de pornirea mugurilor)</strong></td>
   <td><span class="dot dot-no"></span><span class="muted">Nu e necesară</span></td>
   <td>Octombrie – noiembrie</td>
   <td>Ne-astringent (se mănâncă ferm). Rezistent până la -15°C. Tăiere minimă – doar corectivă.</td>
 </tr>
+
 <tr data-cat="rodiu">
-  <td><div class="pom"><span class="badge b-rodiu">Rodiu</span></div><div class="pom" style="margin-top:4px">Ako</div></td>
+  <td><span class="badge b-rodiu">Rodiu</span><div class="pom" style="margin-top:4px">Ako</div></td>
   <td><span class="qty">×2</span></td>
-  <td><span class="dot dot-spring"></span><strong>Martie – 10 apr</strong></td>
-  <td><span class="dot dot-no"></span><span class="muted">Îndepărtare drajoni</span></td>
+  <td><span class="dot dot-spring"></span><strong>Martie – 10 apr (după trecerea gerului)</strong></td>
+  <td><span class="dot dot-no"></span><span class="muted">Îndepărtare drajoni de la bază</span></td>
   <td>Septembrie – octombrie</td>
-  <td>Sensibil la ger sub -8°C. Învelire în ierni grele. Produce din anul 2-3.</td>
+  <td>Sensibil la ger sub -8°C – învelire în ierni grele. Produce din anul 2-3.</td>
 </tr>
+
 </tbody>
 </table>
 </div>
+
 <div class="legend">
   <span><span class="dot dot-spring"></span>Tăiere principală de primăvară</span>
   <span><span class="dot dot-summer"></span>Tăiere de vară</span>
   <span><span class="dot dot-no"></span>Nu e necesară / opțional</span>
-  <span style="color:#993C1D;font-weight:500">⚠ Atenție specială</span>
+  <span class="legend-warn">⚠ Atenție specială</span>
 </div>
+
 <script>
-const btns=document.querySelectorAll('.fbtn');
-const rows=document.querySelectorAll('#tbl tbody tr');
-btns.forEach(b=>{
-  b.addEventListener('click',()=>{
-    btns.forEach(x=>x.classList.remove('active'));
+const btns = document.querySelectorAll('.fbtn');
+const rows = document.querySelectorAll('#tbl tbody tr');
+btns.forEach(b => {
+  b.addEventListener('click', () => {
+    btns.forEach(x => x.classList.remove('active'));
     b.classList.add('active');
-    const cat=b.dataset.cat;
-    rows.forEach(r=>{
-      if(cat==='all'||r.dataset.cat===cat){r.classList.remove('hidden')}
-      else{r.classList.add('hidden')}
+    const cat = b.dataset.cat;
+    rows.forEach(r => {
+      r.classList.toggle('hidden', cat !== 'all' && r.dataset.cat !== cat);
     });
   });
 });
