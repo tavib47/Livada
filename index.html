@@ -401,7 +401,7 @@ body {
     <h1>Ghidul<br><em>livezii</em> mele</h1>
     <p class="hero-subtitle">
       Tot ce trebuie să știi despre pomii fructiferi —<br>
-      tăieri, anatomie, calendar și tehnici corecte.
+      tăieri, anatomie, hartă interactivă și calendar.
     </p>
   </div>
   <div class="scroll-hint" onclick="document.querySelector('.cards-section').scrollIntoView({behavior:'smooth'})">
@@ -413,11 +413,11 @@ body {
 <!-- ══ APP CARDS ══ -->
 <section class="cards-section">
   <div class="section-header">
-    <p class="section-eyebrow">3 instrumente</p>
+    <p class="section-eyebrow">4 instrumente</p>
     <h2 class="section-title">Alege ghidul de care ai nevoie</h2>
   </div>
 
-  <div class="app-grid">
+  <div class="app-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))">
 
     <!-- Card 1 — Tabel tăieri -->
     <a class="app-card" href="tabel_taieri_livada.html">
@@ -579,6 +579,49 @@ body {
           <span class="feat-tag">Greșeli frecvente</span>
         </div>
         <div class="card-cta">Deschide anatomia <span class="cta-arrow">→</span></div>
+      </div>
+    </a>
+
+    <!-- Card 4 — Harta livezii -->
+    <a class="app-card" href="harta_livada.html">
+      <div class="card-banner" style="background:linear-gradient(135deg,#E0ECD0 0%,#C8DCAC 100%)">
+        <svg viewBox="0 0 260 130" width="220">
+          <rect x="20" y="15" width="220" height="100" rx="6" fill="none" stroke="#3B6D11" stroke-width="1.5" opacity="0.4"/>
+          <rect x="30" y="22" width="90" height="60" rx="5" fill="#C4A882" opacity="0.6"/>
+          <text x="75" y="58" font-family="sans-serif" font-size="18" text-anchor="middle" opacity="0.5">🏠</text>
+          <circle cx="150" cy="28" r="7" fill="#B07010" opacity="0.8"/>
+          <circle cx="168" cy="28" r="7" fill="#C83030" opacity="0.8"/>
+          <circle cx="186" cy="28" r="7" fill="#3B6D11" opacity="0.8"/>
+          <circle cx="204" cy="28" r="7" fill="#534AB7" opacity="0.8"/>
+          <circle cx="222" cy="28" r="7" fill="#534AB7" opacity="0.8"/>
+          <circle cx="150" cy="46" r="7" fill="#185FA5" opacity="0.8"/>
+          <circle cx="168" cy="46" r="7" fill="#C83030" opacity="0.8"/>
+          <circle cx="186" cy="46" r="7" fill="#8B2010" opacity="0.8"/>
+          <circle cx="204" cy="46" r="7" fill="#108080" opacity="0.8"/>
+          <circle cx="222" cy="46" r="7" fill="#185FA5" opacity="0.8"/>
+          <circle cx="150" cy="64" r="7" fill="#108080" opacity="0.8"/>
+          <circle cx="168" cy="64" r="7" fill="#963018" opacity="0.8"/>
+          <circle cx="186" cy="64" r="7" fill="#C03870" opacity="0.8"/>
+          <circle cx="204" cy="64" r="7" fill="#3B6D11" opacity="0.8"/>
+          <circle cx="222" cy="64" r="7" fill="#C83030" opacity="0.8"/>
+          <circle cx="34" cy="88" r="7" fill="#3B6D11" opacity="0.7"/>
+          <circle cx="34" cy="103" r="7" fill="#185FA5" opacity="0.7"/>
+          <text x="34" y="80" font-family="sans-serif" font-size="11" text-anchor="middle" opacity="0.5">🚪</text>
+          <rect x="155" y="88" width="30" height="22" rx="3" fill="#C4A882" opacity="0.5"/>
+          <text x="232" y="112" font-family="sans-serif" font-size="10" fill="#3B6D11" opacity="0.4">N↑</text>
+        </svg>
+      </div>
+      <div class="card-body-inner">
+        <div class="card-number">04 — Hartă</div>
+        <div class="card-name">Harta livezii</div>
+        <div class="card-desc">Planul interactiv al proprietății cu poziția exactă a fiecărui pom. Apasă pe orice pom pentru detalii complete.</div>
+        <div class="card-features">
+          <span class="feat-tag">Grid exact Excel</span>
+          <span class="feat-tag">25 pomi</span>
+          <span class="feat-tag">Filtre specii</span>
+          <span class="feat-tag">Zoom</span>
+        </div>
+        <div class="card-cta">Deschide harta <span class="cta-arrow">→</span></div>
       </div>
     </a>
 

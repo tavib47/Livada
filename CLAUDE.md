@@ -8,12 +8,13 @@ Static HTML website ("Livada Mea") — a personal Romanian-language orchard guid
 
 ## Architecture
 
-Four standalone HTML files with all CSS and JS inlined (no build system, no frameworks, no package manager):
+Five standalone HTML files with all CSS and JS inlined (no build system, no frameworks, no package manager):
 
-- **index.html** — Landing page hub linking to the three tool pages. Uses Google Fonts (Lora + DM Sans).
+- **index.html** — Landing page hub linking to the four tool pages. Uses Google Fonts (Lora + DM Sans).
 - **tabel_taieri_livada.html** — Filterable table of pruning schedules for 22 fruit tree varieties (10 species). Uses system fonts. JS handles species filter buttons.
 - **ghid_taieri_pomi.html** — Detailed pruning instructions per species with tab-style navigation. Uses system fonts. JS toggles `.content` sections by species.
 - **ghid_ramuri_pomi.html** — Visual anatomy guide with inline SVG diagrams. Uses Google Fonts (Lora + DM Sans). Largest file (~54KB) due to extensive SVG illustrations.
+- **harta_livada.html** — Interactive grid map of the property showing all 25 fruit trees positioned on a 13x8 grid. Uses Google Fonts (Lora + DM Sans). Features: species filter, zoom controls, click-to-select with side panel detail view, season-aware advice. Tree data is defined in a JS `TREES` array; grid layout (house, annex, paths, gate) is built dynamically via `buildGrid()`.
 
 ## Deployment
 

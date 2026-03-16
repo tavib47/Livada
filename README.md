@@ -17,13 +17,16 @@ Instrucțiuni detaliate pas cu pas pentru fiecare specie: formare, producție, r
 ### 🌿 [Anatomia pomului](https://tavib47.github.io/Livada/ghid_ramuri_pomi.html)
 Ghid vizual complet: tipuri de ramuri, cum recunoști mugurii, tehnica tăieturii, pomi neglijați și cele mai frecvente greșeli.
 
+### 🗺️ [Harta livezii](https://tavib47.github.io/Livada/harta_livada.html)
+Planul interactiv al proprietății cu poziția exactă a fiecărui pom. Click pe orice pom pentru detalii, cu filtre pe specii și zoom.
+
 ---
 
 ## Specii acoperite
 
 Măr · Păr · Cireș · Vișin · Cais · Piersic · Nectarin · Prun · Gutui · Kaki · Rodiu
 
-**22 de soiuri** documentate cu perioade de tăiere, recoltă și observații specifice.
+**25 pomi fructiferi** (22 soiuri) + **11 arbori ornamentali**, documentați cu perioade de tăiere, recoltă și observații specifice.
 
 ---
 
