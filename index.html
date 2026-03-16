@@ -770,7 +770,7 @@ function buildGrid() {
           <div class="tree-circle" style="background:${tree.color}">
             <span>${tree.emoji}</span>
           </div>
-          <div class="tree-name">${tree.pom}<br><em style="font-style:normal;opacity:0.8">${tree.soi.replace(' (1)','').replace(' (2)','')}</em></div>`;
+          <div class="tree-name">${tree.pom}</div>`;
         cell.addEventListener('click', () => selectTree(tree, cell));
       } else if (val === 'G') {
         cell.className = 'cell gate-cell';
