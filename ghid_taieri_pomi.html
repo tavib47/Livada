@@ -1,0 +1,369 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans,sans-serif);font-size:14px;color:var(--color-text-primary);line-height:1.6}
+.wrap{padding:1rem 0}
+.species-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.sp-btn{padding:6px 14px;border-radius:20px;border:0.5px solid var(--color-border-secondary);background:transparent;cursor:pointer;font-size:13px;color:var(--color-text-secondary);transition:all 0.15s;display:flex;align-items:center;gap:6px}
+.sp-btn:hover{background:var(--color-background-secondary)}
+.sp-btn.active{border-color:var(--color-border-primary);color:var(--color-text-primary);font-weight:500;background:var(--color-background-secondary)}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.content{display:none}
+.content.active{display:block}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;margin-bottom:14px}
+.card-title{font-size:15px;font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.card-sub{font-size:12px;color:var(--color-text-secondary);margin-bottom:14px}
+.section-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-secondary);margin:14px 0 6px}
+.steps{list-style:none;display:flex;flex-direction:column;gap:8px}
+.step{display:flex;gap:10px;align-items:flex-start}
+.step-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px}
+.step-text{font-size:13px;line-height:1.6}
+.alert{border-radius:var(--border-radius-md);padding:10px 14px;font-size:13px;margin-top:12px;border-left:3px solid}
+.alert-warn{background:var(--color-background-warning);color:var(--color-text-warning);border-color:#BA7517}
+.alert-info{background:var(--color-background-info);color:var(--color-text-info);border-color:#185FA5}
+.alert-danger{background:var(--color-background-danger);color:var(--color-text-danger);border-color:#A32D2D}
+.alert-success{background:var(--color-background-success);color:var(--color-text-success);border-color:#3B6D11}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.mini-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;font-size:12px}
+.mini-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px}
+.tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;margin:2px}
+.divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:14px 0}
+@media(max-width:500px){.two-col{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<div class="species-grid">
+  <button class="sp-btn active" data-sp="mar"><span class="dot" style="background:#3B6D11"></span>Măr</button>
+  <button class="sp-btn" data-sp="par"><span class="dot" style="background:#185FA5"></span>Păr</button>
+  <button class="sp-btn" data-sp="cires"><span class="dot" style="background:#BA7517"></span>Cireș</button>
+  <button class="sp-btn" data-sp="visin"><span class="dot" style="background:#993C1D"></span>Vișin</button>
+  <button class="sp-btn" data-sp="cais"><span class="dot" style="background:#D4537E"></span>Cais</button>
+  <button class="sp-btn" data-sp="piersic"><span class="dot" style="background:#E24B4A"></span>Piersic / Nectarin</button>
+  <button class="sp-btn" data-sp="prun"><span class="dot" style="background:#534AB7"></span>Prun</button>
+  <button class="sp-btn" data-sp="gutui"><span class="dot" style="background:#BA7517"></span>Gutui</button>
+  <button class="sp-btn" data-sp="kaki"><span class="dot" style="background:#EF9F27"></span>Kaki</button>
+  <button class="sp-btn" data-sp="rodiu"><span class="dot" style="background:#D4537E"></span>Rodiu</button>
+</div>
+
+<!-- MĂR -->
+<div class="content active" id="sp-mar">
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#3B6D11"></span>Măr — Ariane, Golden Rainers, Baya Marisa</div>
+    <div class="card-sub">Specie cu coroană largă · rodește pe pinteni și ramuri de 2+ ani · tăiere moderată anuală</div>
+
+    <div class="section-label">Principiu de bază</div>
+    <p style="font-size:13px">Mărul rodește pe pinteni scurți (ramuri de rod de 2–8 ani) și pe lăstari de 1 an la soiurile viguroase. Scopul tăierii este să menții un echilibru între creștere și rod: prea multă vigoare = frunze, prea puțin lemn nou = pinteni îmbătrâniți și producție slabă.</p>
+
+    <div class="section-label">Tăierea de formare (pomii plantați toamna trecută)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#EAF3DE;color:#27500A">1</span><span class="step-text">Stabilește înălțimea trunchiului: 60–80 cm pentru forme joase (vas), 80–120 cm pentru ax central.</span></li>
+      <li class="step"><span class="step-num" style="background:#EAF3DE;color:#27500A">2</span><span class="step-text">Scurtează axul principal la 60–80 cm deasupra locului unde vrei prima ramură. Tăietura se face la 0,5 cm deasupra unui mugure orientat spre exterior.</span></li>
+      <li class="step"><span class="step-num" style="background:#EAF3DE;color:#27500A">3</span><span class="step-text">Dacă are deja ramuri laterale: păstrează 3–4 ramuri uniforme, echidistante ca unghi față de trunchi (≥45°), scurtate la 1/3 din lungime. Elimină tot ce crește spre interior sau în jos.</span></li>
+      <li class="step"><span class="step-num" style="background:#EAF3DE;color:#27500A">4</span><span class="step-text">Dacă e "băț" fără ramuri: scurtează pur și simplu la înălțimea dorită. Vara vor apărea lăstari din care formezi scheletul.</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea de producție (pomii de 2–3 ani)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#EAF3DE;color:#27500A">1</span><span class="step-text"><strong>Răreală coroană:</strong> elimină ramurile care se încrucișează, cresc spre interior sau umbresc centrul. Coroana trebuie să permită luminii să pătrundă până în interior.</span></li>
+      <li class="step"><span class="step-num" style="background:#EAF3DE;color:#27500A">2</span><span class="step-text"><strong>Scurtare lăstari viguroși:</strong> lăstarii de 1 an mai lungi de 40 cm se scurtează la 1/3–1/2. Tăierea deasupra unui mugure de rod stimulează formarea de pinteni.</span></li>
+      <li class="step"><span class="step-num" style="background:#EAF3DE;color:#27500A">3</span><span class="step-text"><strong>Reîntinerire pinteni:</strong> pintenașii de rod mai vechi de 6–8 ani devin epuizați (noduroși, cu fructe mici). Taie-i la bază sau scurtează la primul mugure vegetativ.</span></li>
+      <li class="step"><span class="step-num" style="background:#EAF3DE;color:#27500A">4</span><span class="step-text"><strong>Echilibrare:</strong> ramurile concurente cu axul principal (la fel de viguroase) se scurtează mai mult decât axul, ca să nu îl depășească.</span></li>
+    </ol>
+
+    <div class="two-col">
+      <div class="mini-card"><div class="mini-label">Unghiul tăieturii</div>45° față de ax, deasupra unui mugure orientat spre exterior</div>
+      <div class="mini-card"><div class="mini-label">Instrumente</div>Foarfecă de tăiat + fierăstrău pentru ramuri > 3 cm. Dezinfectează cu alcool între pomi.</div>
+      <div class="mini-card"><div class="mini-label">Cât tai la un pom matur</div>Max 25–30% din volumul coroanei pe an</div>
+      <div class="mini-card"><div class="mini-label">Tratament după tăiere</div>Mastic de pomi sau pastă bordeleza pe tăieturile mai mari de 2 cm</div>
+    </div>
+
+    <div class="alert alert-info" style="margin-top:12px">Baya Marisa rodește mai devreme (august) — la ea asigură-te că pintenașii de rod sunt bine iluminați. Tăierea de vară (iulie) — ciupește lăstarii viguroși la 5–6 frunze pentru a stimula mugurii de rod pentru anul următor.</div>
+  </div>
+</div>
+
+<!-- PĂR -->
+<div class="content" id="sp-par">
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#185FA5"></span>Păr — Contesa de Paris, Bella di Giugno, Williams Roșu, Latina</div>
+    <div class="card-sub">Similar cu mărul, dar crește mai vertical (piramidal) · mai sensibil la foc bacterian · necesită mai puțină tăiere</div>
+
+    <div class="section-label">Principiu de bază</div>
+    <p style="font-size:13px">Părul are tendință naturală spre creștere verticală. Scopul tăierii este să deschizi coroana spre lumină și să menții ramurile schelet la unghi de 45–60° față de trunchi. Tăie mai puțin decât la măr — excesul de tăiere la păr stimulează lăstari viguroși în detrimentul rodului.</p>
+
+    <div class="section-label">Tăierea de formare (pomi noi)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#E6F1FB;color:#0C447C">1</span><span class="step-text">Scurtează axul principal la 70–90 cm, deasupra unui mugure bine poziționat.</span></li>
+      <li class="step"><span class="step-num" style="background:#E6F1FB;color:#0C447C">2</span><span class="step-text">Ramurile laterale care cresc prea vertical (unghi < 30°) se coboară cu sfori sau cu greutăți mici — nu se taie, ci se direcționează. Unghiul ideal e 45–60°.</span></li>
+      <li class="step"><span class="step-num" style="background:#E6F1FB;color:#0C447C">3</span><span class="step-text">Elimină ramurile care concurează cu axul central (mai ales la forma de ax central/fus belgian, potrivită pentru parcele mici).</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea de producție (pomi stabiliți)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#E6F1FB;color:#0C447C">1</span><span class="step-text"><strong>Răreală:</strong> elimină ramurile care umbresc interiorul, care se încrucișează sau cresc spre trunchi.</span></li>
+      <li class="step"><span class="step-num" style="background:#E6F1FB;color:#0C447C">2</span><span class="step-text"><strong>Scurtare minimă:</strong> la păr scurtează mai puțin decât la măr. Lăstarii de 1 an sub 30 cm nu se ating — devin pinteni de rod singuri.</span></li>
+      <li class="step"><span class="step-num" style="background:#E6F1FB;color:#0C447C">3</span><span class="step-text"><strong>Reîntinerire:</strong> dacă pintenașii de rod sunt vechi și epuizați, taie-i la lemn de 2–3 ani sănătos.</span></li>
+      <li class="step"><span class="step-num" style="background:#E6F1FB;color:#0C447C">4</span><span class="step-text"><strong>Bella di Giugno</strong> (extratimpuriu): după recoltare în iunie, ciupește lăstarii noi la 4–5 frunze pentru a stimula mugurii de rod pentru anul următor.</span></li>
+    </ol>
+
+    <div class="alert alert-danger">Focul bacterian (Erwinia amylovora): dacă observi ramuri cu vârf îndoit „în cârjă" și frunze maronii care nu cad, taie imediat cu 30 cm în lemn sănătos. Dezinfectează foarfeca cu înălbitor 10% sau alcool între fiecare tăietură. Nu face compost din aceste ramuri — arde-le.</div>
+  </div>
+</div>
+
+<!-- CIREȘ -->
+<div class="content" id="sp-cires">
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#BA7517"></span>Cireș — Hibrid Amar, Regina, Early Lory</div>
+    <div class="card-sub">⚠ Specia cea mai sensibilă la tăiere greșită · tăiere EXCLUSIV în sezonul de vegetație activă</div>
+
+    <div class="alert alert-danger">Nu tăia niciodată cireșul toamna, iarna sau primăvara devreme (februarie–martie). Rănile din repaus vegetativ nu se vindecă și devin porți de intrare pentru cancer bacterian (Pseudomonas) și Cytospora. Tăierea de vară, după recoltă, este regula de bază.</div>
+
+    <div class="section-label">Tăierea de formare — pomi plantați toamna trecută</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">1</span><span class="step-text">Așteptă înflorirea completă și apariția frunzelor (aprilie). Abia atunci intervii.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">2</span><span class="step-text">Scurtează axul principal la 80–100 cm de la sol (pentru formă de vas deschis) sau lasă-l mai lung (120–150 cm) pentru ax central.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">3</span><span class="step-text">Dacă are ramuri laterale: păstrează 3–4 ramuri uniform distribuite, scurtate la 40–50 cm. Elimină orice ramură care formează unghi mai mic de 30° cu trunchiul (va fi fragilă).</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">4</span><span class="step-text">Acoperă toate tăieturile mai mari de 1,5 cm cu mastic de pomi imediat. La cireș aceasta e obligatorie, nu opțională.</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea principală — vara după recoltă</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">1</span><span class="step-text"><strong>Timp optim:</strong> imediat după cules, maxim 3 săptămâni. Cu cât mai devreme, cu atât rana se vindecă mai bine înainte de toamnă.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">2</span><span class="step-text"><strong>Limitare înălțime:</strong> cireșul crește agresiv în sus. Taie vârful axului central la înălțimea maximă dorită (2,5–3 m pentru recoltare ușoară), deasupra unei ramuri laterale bine direcționate.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">3</span><span class="step-text"><strong>Răreală coroană:</strong> elimină ramurile care se încrucișează, umbresc centrul sau cresc vertical în interiorul coroanei („lacom").</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">4</span><span class="step-text"><strong>Reîntinerire:</strong> ramurile laterale care au dat rod mai mult de 4–5 ani se scurtează la o ramură tânără de înlocuire sau se elimină complet. Cireșul rodește pe pinteni pe lemn de 2–5 ani.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">5</span><span class="step-text"><strong>Finalizare:</strong> unge cu mastic toate tăieturile > 1 cm. Strânge și arde lemnul tăiat (nu lăsa pe sol — risc de boli).</span></li>
+    </ol>
+
+    <div class="two-col">
+      <div class="mini-card"><div class="mini-label">Early Lory</div>Recoltă mai → taie imediat în mai-iunie. Are cel mai mult timp să se refacă.</div>
+      <div class="mini-card"><div class="mini-label">Regina</div>Recoltă iulie → taie în iulie-august. Fereastra e mai scurtă — acționează rapid.</div>
+      <div class="mini-card"><div class="mini-label">Hibrid Amar</div>Recoltă mai-iunie → la fel ca Early Lory. Verifică dacă e amar (pentru lichior) sau dulce.</div>
+      <div class="mini-card"><div class="mini-label">Instrumente obligatorii</div>Ferăstrău dezinfectat + mastic de pomi. Foarfeca standard poate strivit rana.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VIȘIN -->
+<div class="content" id="sp-visin">
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#993C1D"></span>Vișin — Morella Neagra</div>
+    <div class="card-sub">Mai tolerant decât cireșul · rodește pe lăstari de 1 an și pe pinteni scurți · tăiere moderată</div>
+
+    <div class="section-label">Principiu de bază</div>
+    <p style="font-size:13px">Spre deosebire de cireș, vișinul rodește și pe lemnul de 1 an (lăstari noi). Asta îl face mai ușor de tăiat — dacă greșești un an, se recuperează rapid. Totuși, regula generală rămâne: tăierea de vară e preferabilă.</p>
+
+    <div class="section-label">Tăierea de formare (pom tânăr)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FAECE7;color:#712B13">1</span><span class="step-text">Se poate face în martie sau după înflorire (mai sigur). Formă recomandată: vas deschis cu 3–4 ramuri schelet la 50–70 cm de sol.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAECE7;color:#712B13">2</span><span class="step-text">Scurtează axul la înălțimea dorită. Ramurile schelet se lasă la 40–50 cm, orientate la 45–60° față de trunchi.</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea de producție (vara, după recoltă — iulie-august)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FAECE7;color:#712B13">1</span><span class="step-text"><strong>Reîntinerire anuală:</strong> vișinul "pleșuvește" de jos dacă nu îl tai — rodește doar în vârf. Scurtează ramurile principale la o ramură laterală tânără, mai jos. Asta mută rodul mai aproape de centru.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAECE7;color:#712B13">2</span><span class="step-text"><strong>Elimină lăstarii lacomi:</strong> lăstarii verticali, viguroși, care cresc din trunchi sau din ramuri principale — îi elimini complet.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAECE7;color:#712B13">3</span><span class="step-text"><strong>Aerisire:</strong> la Morella Neagra coroana se înghesuie rapid. Elimină 20–25% din ramurile care se suprapun sau umbresc interiorul.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAECE7;color:#712B13">4</span><span class="step-text"><strong>Nu tăia mai mult de 30%</strong> din coroană într-un singur an — vișinul răspunde cu lăstari lacomi explozivi.</span></li>
+    </ol>
+
+    <div class="alert alert-info">Morella Neagra e parțial autofertilă, dar producția crește semnificativ cu un polenizator în vecinătate (alt vișin sau chiar cireș timpuriu).</div>
+  </div>
+</div>
+
+<!-- CAIS -->
+<div class="content" id="sp-cais">
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#D4537E"></span>Cais — Umberto, Mare Timpuriu</div>
+    <div class="card-sub">Rodește pe pinteni scurți și lăstari de 1 an · sensibil la monilioză · tăiere primăvara târziu</div>
+
+    <div class="alert alert-warn">Tăie caisul abia în martie–început de aprilie, când mugurii au pornit vizibil. Nu în februar sau toamnă — riscul de monilioză și boli bacteriene e mare la rănile din repaus.</div>
+
+    <div class="section-label">Tăierea de formare (pom tânăr)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">1</span><span class="step-text">Formă ideală: vas deschis cu 3–4 ramuri schelet. Caisul crește viguros — un ax central devine greu de gestionat rapid.</span></li>
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">2</span><span class="step-text">Scurtează axul la 70–80 cm. Ramurile laterale alese pentru schelet se scurtează la 30–40 cm, deasupra unui mugure orientat spre exterior.</span></li>
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">3</span><span class="step-text">Elimină ramurile cu unghi mic față de trunchi (< 30°) — sunt predispuse la rupturi sub greutatea fructelor.</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea de producție (pomi stabiliți)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">1</span><span class="step-text"><strong>Răreală coroană:</strong> caisul produce mulți lăstari viguroși anual. Elimină ce crește spre interior, se încrucișează sau umbrește.</span></li>
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">2</span><span class="step-text"><strong>Scurtare lăstari de 1 an:</strong> lăstarii lungi (> 50 cm) se scurtează la 1/3 pentru a stimula ramificarea și formarea de pinteni de rod.</span></li>
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">3</span><span class="step-text"><strong>Reîntinerire pinteni:</strong> pintenașii de rod mai vechi de 4–5 ani se scurtează la lemn proaspăt sau se elimină. Caisul "epuizează" pintenașii mai repede decât mărul.</span></li>
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">4</span><span class="step-text"><strong>Tăiere ușoară post-recoltă:</strong> după cules (iulie pentru Mare Timpuriu, august pentru Umberto) poți elimina ramurile slab productive sau bolnave.</span></li>
+    </ol>
+
+    <div class="alert alert-danger">Mare Timpuriu înflorește devreme (uneori în martie) — risc mare de brumă. Dacă e posibil, plantează-l într-o zonă adăpostită sau pe un versant cu scurgere bună a aerului rece.</div>
+  </div>
+</div>
+
+<!-- PIERSIC / NECTARIN -->
+<div class="content" id="sp-piersic">
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#E24B4A"></span>Piersic & Nectarin — Amalia, Gladis, Tina</div>
+    <div class="card-sub">Specia care necesită cea mai puternică tăiere anuală · rodește EXCLUSIV pe lemnul de 1 an</div>
+
+    <div class="alert alert-danger">Piersicul rodește doar pe lăstarii crescuți în anul precedent. Dacă nu tai în fiecare an, rodul urcă spre vârfuri, coroana se goleșe de jos și în 3–4 ani producția devine nesemnificativă. Tăierea anuală puternică NU e opțională.</div>
+
+    <div class="section-label">Cum identifici lemnul de rod la piersic</div>
+    <p style="font-size:13px;margin-bottom:8px">Pe o ramură de 1 an (creată vara trecută) vei vedea grupuri de câte 3 muguri: 2 laterali rotunzi (muguri de floare/rod) și 1 central mai alungit (mugure de frunze). Aceasta e ramura care va da fruct. Ramurile de 2+ ani deja fructificați nu mai rodesc.</p>
+
+    <div class="section-label">Tăierea de formare (pom tânăr — primul an)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FCEBEB;color:#791F1F">1</span><span class="step-text">Formă: vas deschis cu 3 ramuri schelet la 50–60 cm de sol. Piersicul NU se conduce ca ax central.</span></li>
+      <li class="step"><span class="step-num" style="background:#FCEBEB;color:#791F1F">2</span><span class="step-text">Scurtează axul la 60 cm. Alege 3 lăstari bine distribuiți ca unghi (120° între ei, unghi față de trunchi ≥ 45°) și scurtează-i la 30 cm fiecare.</span></li>
+      <li class="step"><span class="step-num" style="background:#FCEBEB;color:#791F1F">3</span><span class="step-text">Elimină tot restul — complet, de la bază.</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea anuală de producție (1 mar – 20 mar)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FCEBEB;color:#791F1F">1</span><span class="step-text"><strong>Identifică lăstarii de rod:</strong> lăstari de 30–60 cm cu mugurii tripleți descriși mai sus. Aceștia sunt aurul tău — păstrează-i.</span></li>
+      <li class="step"><span class="step-num" style="background:#FCEBEB;color:#791F1F">2</span><span class="step-text"><strong>Regula 1/3:</strong> din toți lăstarii de rod disponibili pe o ramură, păstrează 1/3 (cei mai bine plasați, nu suprapuși), taie 2/3. Îi scurtezi pe cei păstrați la 30–40 cm (lasă 6–8 perechi de muguri).</span></li>
+      <li class="step"><span class="step-num" style="background:#FCEBEB;color:#791F1F">3</span><span class="step-text"><strong>Reîntinerire:</strong> ramura de schelet pe care stau lăstarii de rod se scurtează la ultima ramificare tânără. Practic "muti" rodul mai aproape de baza scheletului în fiecare an.</span></li>
+      <li class="step"><span class="step-num" style="background:#FCEBEB;color:#791F1F">4</span><span class="step-text"><strong>Elimină lăstarii lacomi:</strong> lăstarii verticali viguroși de pe trunchi sau din baza ramurilor — elimină-i complet sau scurtează la 2 muguri dacă vrei să formezi o ramură de înlocuire.</span></li>
+      <li class="step"><span class="step-num" style="background:#FCEBEB;color:#791F1F">5</span><span class="step-text"><strong>Rezultat final:</strong> după tăiere, coroana trebuie să pară "aerisită" — dacă aruncă o pasăre prin ea, nu ar trebui să atingă nicio ramură.</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea de vară (iulie)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FCEBEB;color:#791F1F">1</span><span class="step-text">Ciupește sau taie lăstarii viguroși care s-au dezvoltat peste ramurile de rod cu fructe. Reduci umbrella și îmbunătățești calitatea fructelor.</span></li>
+      <li class="step"><span class="step-num" style="background:#FCEBEB;color:#791F1F">2</span><span class="step-text">Elimini lăstarii lacomi care au apărut de la tăierile de primăvară și care umbresc.</span></li>
+    </ol>
+
+    <div class="alert alert-warn">Bășicarea frunzelor (Taphrina deformans): tratament obligatoriu cu zeamă bordeleza 1% toamna la căderea frunzelor și primăvara la umflarea mugurilor — înainte să apară simptomele. Nu există tratament eficient după infecție.</div>
+  </div>
+</div>
+
+<!-- PRUN -->
+<div class="content" id="sp-prun">
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#534AB7"></span>Prun — Român, Fortune</div>
+    <div class="card-sub">Specie robustă · tăiere moderată · rodește pe pinteni și lăstari de 1 an</div>
+
+    <div class="section-label">Principiu de bază</div>
+    <p style="font-size:13px">Prunul e cel mai ușor de tăiat din livadă. Tolerează bine intervenția și se recuperează rapid. Rodește atât pe pinteni scurți, cât și pe lăstari de 1 an — regim mixt, similar cu mărul.</p>
+
+    <div class="section-label">Tăierea de formare (pom tânăr)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#EEEDFE;color:#3C3489">1</span><span class="step-text">Formă: vas deschis (3–4 ramuri schelet) sau ax central — ambele funcționează bine. Înălțime trunchi: 60–80 cm.</span></li>
+      <li class="step"><span class="step-num" style="background:#EEEDFE;color:#3C3489">2</span><span class="step-text">Scurtează axul la 70–80 cm. Ramurile laterale alese se scurtează la 40 cm.</span></li>
+      <li class="step"><span class="step-num" style="background:#EEEDFE;color:#3C3489">3</span><span class="step-text">Elimină drajonii de la rădăcini (lăstari care cresc de la baza trunchiului sau din pământ) — apar frecvent la prun și "fură" vigoarea pomului.</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea de producție (25 feb – 15 mar)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#EEEDFE;color:#3C3489">1</span><span class="step-text"><strong>Răreală coroană:</strong> elimină ramurile care se încrucișează sau umbresc interiorul. Prunul tinde să se îndesească.</span></li>
+      <li class="step"><span class="step-num" style="background:#EEEDFE;color:#3C3489">2</span><span class="step-text"><strong>Scurtare lăstari:</strong> lăstarii de 1 an mai lungi de 40 cm se scurtează la 1/2. Stimulează ramificarea și pintenii de rod.</span></li>
+      <li class="step"><span class="step-num" style="background:#EEEDFE;color:#3C3489">3</span><span class="step-text"><strong>Eliminare drajoni:</strong> în fiecare an, la fiecare tăiere, elimină drajonii de la rădăcini de la baza solului (nu le tăia sus — regenerează mai agresiv).</span></li>
+      <li class="step"><span class="step-num" style="background:#EEEDFE;color:#3C3489">4</span><span class="step-text"><strong>Reîntinerire pinteni:</strong> pintenii de rod mai vechi de 5–6 ani se elimină sau se scurtează la bază.</span></li>
+    </ol>
+
+    <div class="two-col">
+      <div class="mini-card"><div class="mini-label">Prun Român</div>Autofertil, robust. Productivitate bună fără intervenție excesivă.</div>
+      <div class="mini-card"><div class="mini-label">Fortune (galben)</div>Vigoare mare, crește rapid. Poate necesita polenizator. Tăierea de formare e mai importantă în primii 2 ani.</div>
+    </div>
+
+    <div class="alert alert-info">Monilioza prunului: dacă observi fructe mumificate pe ramuri (rămase din anul trecut), strânge-le și arde-le înainte de înflorire. Nu le lăsa pe pom — sursa principală de infecție pentru noul an.</div>
+  </div>
+</div>
+
+<!-- GUTUI -->
+<div class="content" id="sp-gutui">
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#BA7517"></span>Gutui — Beretzki, De Portugalia</div>
+    <div class="card-sub">Cea mai simplă tăiere din livadă · rodește pe lăstari de 1 an · necesită puțin</div>
+
+    <div class="section-label">Principiu de bază</div>
+    <p style="font-size:13px">Gutuiul rodește pe lăstarii crescuți în anul curent (vârfurile lăstarilor de 1 an). E simplu: dacă lăsarul a crescut, vârful lui va face fruct. Tăierea excesivă reduce producția direct.</p>
+
+    <div class="section-label">Tăierea de formare (pom tânăr)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">1</span><span class="step-text">Formă: vas deschis cu 3–4 ramuri schelet la 50–60 cm de sol. Gutuiul natural tinde spre tufiș — definește trunchiul clar în primii ani.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">2</span><span class="step-text">Scurtează axul la 70 cm. Alege 3–4 ramuri schelet și scurtează-le la 30–40 cm.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">3</span><span class="step-text">Elimină lăstarii care pornesc de la baza trunchiului sau de la sol (gutuiul face des drajoni).</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea de producție (20 feb – 5 mar)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">1</span><span class="step-text"><strong>Tăiere minimă:</strong> elimină ramurile uscate, bolnave sau care se încrucișează. Atât — nu mai mult.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">2</span><span class="step-text"><strong>Nu scurta lăstarii de 1 an</strong> — sunt viitorii purtători de fructe. Dacă îi tai, pierzi recolta din acel an.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">3</span><span class="step-text"><strong>Aerisire:</strong> dacă coroana e prea deasă, elimină selectiv 1–2 ramuri din interior pentru pătrunderea luminii.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">4</span><span class="step-text"><strong>Drajoni:</strong> elimină-i în fiecare an, de la nivelul solului.</span></li>
+    </ol>
+
+    <div class="alert alert-warn">Focul bacterian (Erwinia): gutuiul e la fel de susceptibil ca părul. Verifică primăvara după înflorire — ramurile cu vârf curbat și frunze maronii se taie imediat cu 30 cm în lemn sănătos. Dezinfectează foarfeca între tăieturi.</div>
+  </div>
+</div>
+
+<!-- KAKI -->
+<div class="content" id="sp-kaki">
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#EF9F27"></span>Kaki — Fuyu</div>
+    <div class="card-sub">Tăiere minimă · crește lent dar sigur · rodește pe lăstari de 1 an la capătul ramurilor</div>
+
+    <div class="section-label">Principiu de bază</div>
+    <p style="font-size:13px">Kakiul necesită cea mai puțină tăiere din livadă — mai ales în primii ani. Rodește pe lăstarii noi de la capătul ramurilor din anul precedent. Tăierea agresivă reduce drastic producția și stresează pomul inutil.</p>
+
+    <div class="section-label">Tăierea de formare (pom tânăr — primii 3 ani)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">1</span><span class="step-text">Scurtează axul principal la 80–100 cm în primul an. Alege 3–4 ramuri schelet bine distribuite și lasă-le să crească — nu le scurta în exces.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">2</span><span class="step-text">Elimină ramurile care cresc spre interior, în jos sau care se suprapun.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">3</span><span class="step-text">Kakiul crește lent în primii ani și poate arăta "slab" — e normal. Nu forța cu tăieri stimulatoare.</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea de producție (martie, înainte de pornirea mugurilor)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">1</span><span class="step-text"><strong>Tăiere strict corectivă:</strong> elimină ramurile uscate (sunt frecvente la kaki iarna după geruri), ramurile bolnave sau cele care se încrucișează.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">2</span><span class="step-text"><strong>Limitare înălțime:</strong> dacă pomul devine prea înalt (> 3 m), scurtează axul la o ramură laterală bine poziționată.</span></li>
+      <li class="step"><span class="step-num" style="background:#FAEEDA;color:#633806">3</span><span class="step-text"><strong>Nu atinge lăstarii de 1 an</strong> sănătoși — ei vor produce fructele în sezonul curent.</span></li>
+    </ol>
+
+    <div class="alert alert-warn">Fuyu e rezistent la ger până la -15°C, dar în zona București-Ilfov iernile pot depăși ocazional această limită. În iernile grele verifică primăvara ce ramuri au înghețat (lemn brunificat la secționare) și elimină-le abia după ce pornesc mugurii pe ramurile sănătoase — atunci știi clar ce a murit.</div>
+
+    <div class="alert alert-info">Fuyu e ne-astringent — se mănâncă ferm, ca un măr. Nu trebuie să aștepți să se înmoaie ca la soiurile tradiționale. Recoltezi în octombrie–noiembrie, după primul ger ușor care intensifică dulceața.</div>
+  </div>
+</div>
+
+<!-- RODIU -->
+<div class="content" id="sp-rodiu">
+  <div class="card">
+    <div class="card-title"><span class="dot" style="background:#D4537E"></span>Rodiu — Ako</div>
+    <div class="card-sub">Tufă sau pom mic · tăiere de formare importantă · sensibil la ger sub -8°C</div>
+
+    <div class="section-label">Principiu de bază</div>
+    <p style="font-size:13px">Rodiul crește natural ca tufă cu multiple tulpini. Poți alege să îl conduci ca tufiș ornamental-productiv (mai rezistent) sau ca pom cu un trunchi (mai expus la ger). În zona București-Ilfov, forma de tufă cu trunchi multiplu e mai sigură.</p>
+
+    <div class="section-label">Tăierea de formare (pomi plantați toamna trecută)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">1</span><span class="step-text"><strong>Formă tufiș:</strong> lasă 3–5 tulpini principale de la bază, bine distribuite. Elimină restul de la sol. Această formă oferă protecție mai bună la ger — dacă o tulpină îngheață, restul supraviețuiesc.</span></li>
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">2</span><span class="step-text"><strong>Formă pom:</strong> dacă preferi un trunchi unic, alege cea mai viguroasă tulpină, elimină restul și scurtează la 70–80 cm. Protejează baza trunchiului cu paie sau agrotextil iarna.</span></li>
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">3</span><span class="step-text">Așteptă martie–10 aprilie pentru tăierea de formare — după ce trece riscul de ger și mugurii încep să se umfle.</span></li>
+    </ol>
+
+    <div class="section-label">Tăierea de producție (primăvara sau vara)</div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">1</span><span class="step-text"><strong>Eliminare drajoni:</strong> rodiul produce drajoni abundent de la baza tulpinilor. Elimină-i de la nivelul solului ori de câte ori apar — cel puțin 2–3 ori pe sezon (primăvară, vară, toamnă).</span></li>
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">2</span><span class="step-text"><strong>Răreală minimă:</strong> elimină ramurile uscate, încrucișate sau care cresc spre interior. Rodiul rodește pe lăstarii de 1 an — nu scurta lăstarii noi sănătoși.</span></li>
+      <li class="step"><span class="step-num" style="background:#FBEAF0;color:#72243E">3</span><span class="step-text"><strong>Limitare înălțime:</strong> dacă crește prea mult, scurtează tulpinile principale la o ramificare laterală.</span></li>
+    </ol>
+
+    <div class="alert alert-danger">Sub -8°C rodiul suferă. Sub -12°C îngheață până la sol. Dacă iarna viitoare se anunță foarte rece, învelește baza cu paie sau agrotextil. Vestea bună: chiar dacă înghea complet, pornește din rădăcini primăvara și se reface în 1–2 ani.</div>
+
+    <div class="alert alert-info">Ako produce din anul 2–3 după plantare. Primele fructe pot fi mai puține — e normal. Producția crește semnificativ din anul 4–5.</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const btns=document.querySelectorAll('.sp-btn');
+const contents=document.querySelectorAll('.content');
+btns.forEach(b=>{
+  b.addEventListener('click',()=>{
+    btns.forEach(x=>x.classList.remove('active'));
+    contents.forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById('sp-'+b.dataset.sp).classList.add('active');
+  });
+});
+</script>
