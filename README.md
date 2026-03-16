@@ -8,7 +8,7 @@
 
 ## Ce conține
 
-### 📋 [Tabel tăieri livadă](https://tavib47.github.io/Livada/tabel_taieri_livada.html)
+### 📋 [Tabel tăieri livadă](https://tavib47.github.io/Livada/informatii.html)
 Toți pomii din livadă, cu perioadele exacte de tăiere (primăvară și vară), recolta și observații esențiale. Filtrare pe specii.
 
 ### ✂️ [Ghid tăieri pe specii](https://tavib47.github.io/Livada/ghid_taieri_pomi.html)
