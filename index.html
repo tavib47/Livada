@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livada Mea — Ghid Complet</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bark:     #5C3D1E;
+  --bark-md:  #8B6242;
+  --bark-lt:  #C4A882;
+  --leaf:     #3B6D11;
+  --leaf-lt:  #7AAD3A;
+  --gold:     #C8922A;
+  --gold-lt:  #F0C85A;
+  --cream:    #FDFAF5;
+  --cream2:   #F5F0E8;
+  --cream3:   #EDE6D8;
+  --ink:      #2C1F0E;
+  --ink2:     #6B5040;
+  --ink3:     #A0876A;
+  --border:   rgba(92,61,30,0.15);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cream:  #141008;
+    --cream2: #1E1710;
+    --cream3: #282018;
+    --ink:    #F0E8D8;
+    --ink2:   #C4A882;
+    --ink3:   #7A6050;
+    --border: rgba(200,168,130,0.12);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grain texture */
+.hero::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,98,66,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(59,109,17,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Decorative tree rings in background */
+.rings {
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.rings span {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.rings span:nth-child(1) { width: 200px; height: 200px; }
+.rings span:nth-child(2) { width: 340px; height: 340px; }
+.rings span:nth-child(3) { width: 480px; height: 480px; }
+.rings span:nth-child(4) { width: 620px; height: 620px; }
+.rings span:nth-child(5) { width: 760px; height: 760px; opacity: 0.4; }
+
+.hero-content { position: relative; z-index: 1; max-width: 640px; }
+
+/* Season badge */
+.season-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--cream3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.season-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--leaf);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--bark);
+  margin-bottom: 0.3rem;
+}
+@media (prefers-color-scheme: dark) { .hero h1 { color: var(--gold-lt); } }
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--leaf);
+}
+@media (prefers-color-scheme: dark) { .hero h1 em { color: var(--leaf-lt); } }
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--ink2);
+  font-weight: 300;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+/* ── SCROLL INDICATOR ── */
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink3);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 1;
+}
+.scroll-arrow {
+  width: 20px; height: 20px;
+  border-right: 1.5px solid var(--ink3);
+  border-bottom: 1.5px solid var(--ink3);
+  transform: rotate(45deg);
+  animation: bounce 1.8s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(5px); }
+}
+
+/* ── CARDS SECTION ── */
+.cards-section {
+  padding: 5rem 1.5rem 6rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 0.6rem;
+}
+.section-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 600;
+  color: var(--bark);
+  letter-spacing: -0.02em;
+}
+@media (prefers-color-scheme: dark) { .section-title { color: var(--gold-lt); } }
+
+/* ── APP CARDS ── */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.app-card {
+  background: var(--cream2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 0;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.app-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(92,61,30,0.12);
+}
+@media (prefers-color-scheme: dark) {
+  .app-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+}
+
+.card-banner {
+  height: 140px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-body-inner {
+  padding: 1.4rem 1.4rem 1.6rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-number {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 6px;
+}
+
+.card-name {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.2rem;
+}
+
+.card-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1.2rem;
+}
+.feat-tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: var(--cream3);
+  color: var(--ink3);
+  border: 1px solid var(--border);
+}
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--bark);
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+  transition: gap 0.2s;
+}
+@media (prefers-color-scheme: dark) { .card-cta { color: var(--gold-lt); } }
+.app-card:hover .card-cta { gap: 10px; }
+.cta-arrow { font-size: 16px; }
+
+/* ── SVG ILLUSTRATIONS in card banners ── */
+
+/* Card 1 — Tabel (table illustration) */
+.banner-1 { background: linear-gradient(135deg, #EDE6D8 0%, #E0D4C0 100%); }
+@media (prefers-color-scheme: dark) {
+  .banner-1 { background: linear-gradient(135deg, #2A2018 0%, #1E1610 100%); }
+}
+
+/* Card 2 — Ghid tăieri (scissors / tree) */
+.banner-2 { background: linear-gradient(135deg, #E8F2E0 0%, #D8EAC8 100%); }
+@media (prefers-color-scheme: dark) {
+  .banner-2 { background: linear-gradient(135deg, #0E1E08 0%, #162612 100%); }
+}
+
+/* Card 3 — Anatomie (branch diagram) */
+.banner-3 { background: linear-gradient(135deg, #EBE6DC 0%, #DDD4C4 100%); }
+@media (prefers-color-scheme: dark) {
+  .banner-3 { background: linear-gradient(135deg, #221A10 0%, #1A1208 100%); }
+}
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 5rem auto;
+  max-width: 300px;
+  color: var(--ink3);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── TIPS SECTION ── */
+.tips-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+}
+.tips-title {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bark);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+@media (prefers-color-scheme: dark) { .tips-title { color: var(--gold-lt); } }
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 480px) { .tips-grid { grid-template-columns: 1fr; } }
+.tip {
+  background: var(--cream2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.55;
+}
+.tip strong { display: block; color: var(--ink); font-weight: 500; margin-bottom: 2px; font-size: 13px; }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 12px;
+  color: var(--ink3);
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="rings">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-content">
+    <div class="season-badge">
+      <span class="season-dot"></span>
+      Primăvara 2026 — sezon de tăieri
+    </div>
+    <h1>Ghidul<br><em>livezii</em> mele</h1>
+    <p class="hero-subtitle">
+      Tot ce trebuie să știi despre pomii fructiferi —<br>
+      tăieri, anatomie, calendar și tehnici corecte.
+    </p>
+  </div>
+  <div class="scroll-hint" onclick="document.querySelector('.cards-section').scrollIntoView({behavior:'smooth'})">
+    <span>Explorează</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ══ APP CARDS ══ -->
+<section class="cards-section">
+  <div class="section-header">
+    <p class="section-eyebrow">3 instrumente</p>
+    <h2 class="section-title">Alege ghidul de care ai nevoie</h2>
+  </div>
+
+  <div class="app-grid">
+
+    <!-- Card 1 — Tabel tăieri -->
+    <a class="app-card" href="tabel_taieri_livada.html">
+      <div class="card-banner banner-1">
+        <svg viewBox="0 0 260 130" width="220">
+          <!-- Table illustration -->
+          <rect x="20" y="20" width="220" height="90" rx="8" fill="none" stroke="#8B6242" stroke-width="1.5" opacity="0.5"/>
+          <!-- Header row -->
+          <rect x="20" y="20" width="220" height="22" rx="8" fill="#8B6242" opacity="0.15"/>
+          <line x1="20" y1="42" x2="240" y2="42" stroke="#8B6242" stroke-width="1" opacity="0.3"/>
+          <!-- Column dividers -->
+          <line x1="80" y1="20" x2="80" y2="110" stroke="#8B6242" stroke-width="0.8" opacity="0.2"/>
+          <line x1="148" y1="20" x2="148" y2="110" stroke="#8B6242" stroke-width="0.8" opacity="0.2"/>
+          <line x1="200" y1="20" x2="200" y2="110" stroke="#8B6242" stroke-width="0.8" opacity="0.2"/>
+          <!-- Row separators -->
+          <line x1="20" y1="57" x2="240" y2="57" stroke="#8B6242" stroke-width="0.8" opacity="0.2"/>
+          <line x1="20" y1="72" x2="240" y2="72" stroke="#8B6242" stroke-width="0.8" opacity="0.2"/>
+          <line x1="20" y1="87" x2="240" y2="87" stroke="#8B6242" stroke-width="0.8" opacity="0.2"/>
+          <!-- Badges in first column -->
+          <rect x="26" y="45" width="28" height="10" rx="5" fill="#EAF3DE"/>
+          <rect x="26" y="60" width="28" height="10" rx="5" fill="#E6F1FB"/>
+          <rect x="26" y="75" width="28" height="10" rx="5" fill="#FAEEDA"/>
+          <rect x="26" y="90" width="28" height="10" rx="5" fill="#FBEAF0"/>
+          <!-- Content lines -->
+          <rect x="62" y="47" width="50" height="6" rx="3" fill="#8B6242" opacity="0.2"/>
+          <rect x="62" y="62" width="44" height="6" rx="3" fill="#8B6242" opacity="0.2"/>
+          <rect x="62" y="77" width="48" height="6" rx="3" fill="#8B6242" opacity="0.2"/>
+          <rect x="62" y="92" width="38" height="6" rx="3" fill="#8B6242" opacity="0.2"/>
+          <!-- Green dots (spring indicator) -->
+          <circle cx="158" cy="50" r="4" fill="#3B6D11" opacity="0.6"/>
+          <circle cx="158" cy="65" r="4" fill="#3B6D11" opacity="0.6"/>
+          <circle cx="158" cy="80" r="4" fill="#BA7517" opacity="0.6"/>
+          <!-- warning symbol -->
+          <text x="156" y="97" font-size="9" fill="#A32D2D" opacity="0.7" text-anchor="middle">⚠</text>
+        </svg>
+      </div>
+      <div class="card-body-inner">
+        <div class="card-number">01 — Referință</div>
+        <div class="card-name">Tabel tăieri livadă</div>
+        <div class="card-desc">Toți pomii tăi, cu perioadele exacte de tăiere primăvară și vară, recolta și observații esențiale. Cu filtre pe specii.</div>
+        <div class="card-features">
+          <span class="feat-tag">22 soiuri</span>
+          <span class="feat-tag">Filtre specii</span>
+          <span class="feat-tag">Calendar tăieri</span>
+        </div>
+        <div class="card-cta">Deschide tabelul <span class="cta-arrow">→</span></div>
+      </div>
+    </a>
+
+    <!-- Card 2 — Ghid tăieri pomi -->
+    <a class="app-card" href="ghid_taieri_pomi.html">
+      <div class="card-banner banner-2">
+        <svg viewBox="0 0 260 130" width="220">
+          <!-- Tree silhouette -->
+          <!-- Trunk -->
+          <rect x="122" y="75" width="16" height="50" rx="6" fill="#5C3D1E" opacity="0.5"/>
+          <!-- Skeleton branches -->
+          <path d="M130,85 Q100,65 70,50" stroke="#5C3D1E" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <path d="M130,82 Q162,62 192,48" stroke="#5C3D1E" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <path d="M130,78 Q128,55 127,30" stroke="#5C3D1E" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <!-- Semi-skeleton -->
+          <path d="M90,65 Q68,48 55,35" stroke="#8B6242" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <path d="M105,57 Q95,40 88,26" stroke="#8B6242" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <path d="M162,62 Q178,44 190,32" stroke="#8B6242" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <!-- Rod branches -->
+          <line x1="55" y1="35" x2="42" y2="22" stroke="#3B6D11" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+          <line x1="55" y1="35" x2="58" y2="20" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <line x1="88" y1="26" x2="78" y2="14" stroke="#3B6D11" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+          <line x1="88" y1="26" x2="96" y2="14" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <line x1="127" y1="30" x2="118" y2="16" stroke="#3B6D11" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+          <line x1="127" y1="30" x2="135" y2="16" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <line x1="190" y1="32" x2="180" y2="18" stroke="#3B6D11" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+          <line x1="190" y1="32" x2="200" y2="20" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <!-- Fruits -->
+          <circle cx="42" cy="20" r="5" fill="#C8922A" opacity="0.8"/>
+          <circle cx="59" cy="18" r="4" fill="#C8922A" opacity="0.8"/>
+          <circle cx="77" cy="12" r="5" fill="#C8922A" opacity="0.8"/>
+          <circle cx="97" cy="12" r="4" fill="#C8922A" opacity="0.8"/>
+          <circle cx="117" cy="14" r="5" fill="#C8922A" opacity="0.8"/>
+          <circle cx="136" cy="14" r="4" fill="#C8922A" opacity="0.8"/>
+          <circle cx="179" cy="16" r="5" fill="#C8922A" opacity="0.8"/>
+          <circle cx="201" cy="18" r="4" fill="#C8922A" opacity="0.8"/>
+          <!-- Scissors icon hint -->
+          <text x="210" y="105" font-size="26" opacity="0.25" fill="#3B6D11">✂</text>
+        </svg>
+      </div>
+      <div class="card-body-inner">
+        <div class="card-number">02 — Instrucțiuni</div>
+        <div class="card-name">Ghid tăieri pe specii</div>
+        <div class="card-desc">Instrucțiuni detaliate pas cu pas pentru fiecare specie din livadă: formare, producție, reîntinerire și avertizări specifice.</div>
+        <div class="card-features">
+          <span class="feat-tag">10 specii</span>
+          <span class="feat-tag">Pomi tineri</span>
+          <span class="feat-tag">Pomi maturi</span>
+        </div>
+        <div class="card-cta">Deschide ghidul <span class="cta-arrow">→</span></div>
+      </div>
+    </a>
+
+    <!-- Card 3 — Anatomie ramuri -->
+    <a class="app-card" href="ghid_ramuri_pomi.html">
+      <div class="card-banner banner-3">
+        <svg viewBox="0 0 260 130" width="220">
+          <!-- Anatomie diagram — labelled branches -->
+          <!-- Trunk -->
+          <rect x="118" y="55" width="22" height="72" rx="8" fill="#5C3D1E" opacity="0.45"/>
+          <!-- Main skeleton L -->
+          <path d="M126,72 Q88,55 50,42" stroke="#5C3D1E" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.45"/>
+          <!-- Main skeleton R -->
+          <path d="M134,70 Q172,53 210,40" stroke="#5C3D1E" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.45"/>
+          <!-- Semi L -->
+          <path d="M72,58 Q55,42 40,28" stroke="#8B6242" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.55"/>
+          <!-- Semi R -->
+          <path d="M188,52 Q202,36 215,22" stroke="#8B6242" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.55"/>
+
+          <!-- Labels -->
+          <!-- Schelet label -->
+          <line x1="50" y1="42" x2="30" y2="55" stroke="#5C3D1E" stroke-width="1" opacity="0.6" stroke-dasharray="3,2"/>
+          <rect x="4" y="50" width="50" height="14" rx="4" fill="#5C3D1E" opacity="0.7"/>
+          <text x="29" y="61" font-family="sans-serif" font-size="8" fill="#F5E8D0" text-anchor="middle" font-weight="600">SCHELET</text>
+
+          <!-- Semi label -->
+          <line x1="40" y1="28" x2="22" y2="22" stroke="#8B6242" stroke-width="1" opacity="0.6" stroke-dasharray="3,2"/>
+          <rect x="2" y="14" width="62" height="14" rx="4" fill="#8B6242" opacity="0.7"/>
+          <text x="33" y="25" font-family="sans-serif" font-size="8" fill="#F5E8D0" text-anchor="middle" font-weight="600">SEMISCHELET</text>
+
+          <!-- Rod branches from semi L -->
+          <line x1="40" y1="28" x2="28" y2="14" stroke="#3B6D11" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+          <line x1="40" y1="28" x2="46" y2="12" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+          <!-- Rod branches from semi R -->
+          <line x1="215" y1="22" x2="204" y2="8" stroke="#3B6D11" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+          <line x1="215" y1="22" x2="224" y2="8" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+
+          <!-- Rod label -->
+          <line x1="224" y1="8" x2="240" y2="16" stroke="#3B6D11" stroke-width="1" opacity="0.6" stroke-dasharray="3,2"/>
+          <rect x="200" y="8" width="56" height="14" rx="4" fill="#3B6D11" opacity="0.7"/>
+          <text x="228" y="19" font-family="sans-serif" font-size="8" fill="#F5E8D0" text-anchor="middle" font-weight="600">RAM. ROD</text>
+
+          <!-- Lacom — red dashed -->
+          <path d="M155,65 Q158,45 160,22" stroke="#A32D2D" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="5,3" opacity="0.7"/>
+          <polygon points="160,14 155,26 165,26" fill="#A32D2D" opacity="0.7"/>
+          <line x1="160" y1="22" x2="192" y2="18" stroke="#A32D2D" stroke-width="1" opacity="0.6" stroke-dasharray="3,2"/>
+          <rect x="190" y="10" width="52" height="14" rx="4" fill="#A32D2D" opacity="0.7"/>
+          <text x="216" y="21" font-family="sans-serif" font-size="8" fill="#fff" text-anchor="middle" font-weight="600">LACOM ✗</text>
+
+          <!-- Mugure icon bottom right -->
+          <circle cx="228" cy="105" r="10" fill="#C8922A" opacity="0.2"/>
+          <circle cx="228" cy="105" r="6" fill="#C8922A" opacity="0.3"/>
+          <text x="206" y="116" font-family="sans-serif" font-size="8" fill="#8B6242" opacity="0.6">mugure rod</text>
+        </svg>
+      </div>
+      <div class="card-body-inner">
+        <div class="card-number">03 — Educație</div>
+        <div class="card-name">Anatomia pomului</div>
+        <div class="card-desc">Ghid vizual complet: tipuri de ramuri, cum recunoști mugurii, tehnica tăieturii, pomi neglijați și cele mai frecvente greșeli.</div>
+        <div class="card-features">
+          <span class="feat-tag">6 capitole</span>
+          <span class="feat-tag">Diagrame SVG</span>
+          <span class="feat-tag">Greșeli frecvente</span>
+        </div>
+        <div class="card-cta">Deschide anatomia <span class="cta-arrow">→</span></div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ══ DIVIDER ══ -->
+<div class="divider">✦ sfaturi rapide ✦</div>
+
+<!-- ══ TIPS ══ -->
+<section class="tips-section">
+  <h3 class="tips-title">De reținut în fiecare an</h3>
+  <div class="tips-grid">
+    <div class="tip"><strong>Maxim 25–30% pe an</strong>La un pom neglijat, distribuie tăierile pe 2–3 ani. Agresivitatea declanșează lăstari lacomi.</div>
+    <div class="tip"><strong>Tăietura la collar</strong>Zero ciot. Inelul de ramificare conține celulele care vindecă rana. Dacă lași ciot, lemnul putrezește.</div>
+    <div class="tip"><strong>Cireșul — regula de aur</strong>Nu tăia niciodată în repaus vegetativ. Exclusiv după recoltă, vara, când rana se vindecă rapid.</div>
+    <div class="tip"><strong>Piersicul — tăiere anuală</strong>Rodește exclusiv pe lemnul de 1 an. Fără tăiere anuală puternică, producția dispare în 3–4 ani.</div>
+    <div class="tip"><strong>Dezinfecție obligatorie</strong>Alcool 70% pe foarfecă între pomi. La cireș — între fiecare tăietură. Bolile se transmit prin lamă.</div>
+    <div class="tip"><strong>Mugurele exterior</strong>Când scurtezi o ramură, taie întotdeauna deasupra unui mugure orientat spre exterior — nu spre centrul coroanei.</div>
+  </div>
+</section>
+
+<footer class="footer">
+  Livada Mea · Ghid personal · Snagov, Ilfov · 2026
+</footer>
+
+</body>
+</html>
